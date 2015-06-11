@@ -4,8 +4,10 @@
 * user can log in with imgur
 * user can start a project
 * user can specify the dimensions of a slide
-* logged in users can save changes to slides/projects
 * user can specify the color depth between 16bit pallette and 32 bit pallet (RGBA)
+* user can select color to place
+* user can click on a pixel and assign color
+* logged in users can save changes to slides/projects
 
 ### mark 2 features
 * user can have many slides in a project
