@@ -12,8 +12,8 @@
 * user can generate a sheet from a project to share
 * user can share their projects on imgur
 * user can import pngs or bmps to become projects
-* user can 
-* user can 
+* user can upgrade projects from 400k pixels to 400 million (360k for context http://www.spriters-resource.com/snes/smarioworld/sheet/53664/)
+* user can upgrade from having 5 projects to larger numbers based on subscription
 * user can 
 * user can 
 * user can 
