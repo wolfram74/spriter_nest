@@ -28,5 +28,3 @@
 * user can 
 * user can 
 * user can 
-<!-- be more mindful of when previous decisions are hindering new features and when to refactor them -->
-<!-- be more mindful when communicating ideas to tend towards generalities at first and be more precise as the situation calls for it -->
