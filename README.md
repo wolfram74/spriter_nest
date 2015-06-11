@@ -14,7 +14,7 @@
 * user can import pngs or bmps to become projects
 * user can upgrade projects from 400k pixels to 400 million (360k for context http://www.spriters-resource.com/snes/smarioworld/sheet/53664/)
 * user can upgrade from having 5 projects to larger numbers based on subscription
-* user can 
+* user can undo changes to projects during a session
 * user can 
 * user can 
 * user can 
