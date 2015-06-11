@@ -6,12 +6,14 @@
 * user can specify the dimensions of a slide
 * logged in users can save changes to slides/projects
 * user can specify the color depth between 16bit pallette and 32 bit pallet (RGBA)
+
 ### mark 2 features
 * user can have many slides in a project
 * user can underlay images on a slide to rotoscope
 * user can rearrange the order of slides
 * user can select a collection of slides and animate them in order.
 * user can undo changes to projects during a session
+
 ### mark 3 features
 * user can generate a sheet from a project to share
 * user can share their projects on imgur
