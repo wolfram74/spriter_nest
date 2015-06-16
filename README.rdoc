@@ -26,3 +26,14 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+==notes on imgur oauth (docs https://api.imgur.com/oauth2)
+
+authorization URL
+https://api.imgur.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=REQUESTED_RESPONSE_TYPE&state=APPLICATION_STATE
+
+state variable useful for more specific redirects
+response type is just going to be token, it's much more direct, pin leads to bad UX
+client id is fairly straightforward.
+
+png's up to 1meg in size will remain as png's and be lossless. Explore javascript manipulations and saving with pngs... this should continue to be the case well into the 400k pixel regime.
