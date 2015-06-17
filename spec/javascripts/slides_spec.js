@@ -26,3 +26,13 @@ describe('slides property tests', function(){
     expect(testSlide.pixels[0][0].length).toBe(4);
   });
 })
+describe('slides behavior tests', function(){
+  it("slides can have a color set at a pixel", function(){
+    var testProject = new Project({defaultWidth: 10, defaultHeight:10, colorDept: 256})
+    testProject.newSlide()
+    testProject.setWorkingSlide(0)
+    testProject.setPenColor([1,2,3,4])
+    testProject.workingSlide.setColorAt([0,0])
+    expect(testProject.pixels[0][0]).toBe([1,2,3,4]);
+  });
+})

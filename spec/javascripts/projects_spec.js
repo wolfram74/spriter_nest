@@ -25,6 +25,14 @@ describe('projects property tests', function(){
     var testProject = new Project()
     expect(testProject.hasOwnProperty("slides")).toBe(true);
   });
+  it("projects have a penColor property", function(){
+    var testProject = new Project()
+    expect(testProject.hasOwnProperty("penColor")).toBe(true);
+  });
+  it("projects have a workingSlide property", function(){
+    var testProject = new Project()
+    expect(testProject.hasOwnProperty("workingSlide")).toBe(true);
+  });
 })
 
 describe('projects behavior tests', function(){
@@ -41,11 +49,15 @@ describe('projects behavior tests', function(){
     var testProject = new Project({defaultWidth: 75})
     testProject.newSlide()
     var newSlide = testProject.pop()
-    expect(testProject.hasOwnProperty("defaultWidth")).toBe(true);
+    expect(newSlide.height).toBe(testProject.defaultHeight);
+    expect(newSlide.width).toBe(testProject.defaultWidth);
   });
-  it("projects have a default y proportion", function(){
-    var testProject = new Project()
-    expect(testProject.hasOwnProperty("defaultHeight")).toBe(true);
+  it("projects can set penColor", function(){
+    var testProject = new Project({colorDepth:256})
+    var oldColor = testProject.penColor
+    testProject.setPenColor([1,2,3,4])
+    expect(oldColor).toBe([0,0,0,0]);
+    expect(testProject.penColor).toBe([1,2,3,4]);
   });
   it("projects have a color depth property", function(){
     var testProject = new Project()

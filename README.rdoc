@@ -57,9 +57,9 @@ slides belong to project t
 
 project can generate a new blank slide t
 project can generate a new slide copied from an old slide.
-project can select color for new pixels
+project can select color for new pixels t
 projects can select collections of frames to iterate over in animation mode 
 projects can save to png and be stored in imgur
 projects can load from imgur
 
-slides respond to #setAt which sets at the x-y coordinate a new rgba value.
+slides respond to #setAt which sets at the x-y coordinate a new rgba value. t
