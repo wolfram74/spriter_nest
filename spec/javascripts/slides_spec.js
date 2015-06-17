@@ -32,7 +32,7 @@ describe('slides behavior tests', function(){
     testProject.newSlide()
     testProject.setWorkingSlide(0)
     testProject.setPenColor([1,2,3,4])
-    testProject.workingSlide.setColorAt([0,0])
+    testProject.workingSlide.setColorAt({x:0, y:0})
     expect(testProject.pixels[0][0]).toBe([1,2,3,4]);
   });
 })

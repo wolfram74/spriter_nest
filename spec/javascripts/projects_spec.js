@@ -25,6 +25,10 @@ describe('projects property tests', function(){
     var testProject = new Project()
     expect(testProject.hasOwnProperty("slides")).toBe(true);
   });
+  it("projects have a animationQueue property", function(){
+    var testProject = new Project()
+    expect(testProject.hasOwnProperty("animationQueue")).toBe(true);
+  });
   it("projects have a penColor property", function(){
     var testProject = new Project()
     expect(testProject.hasOwnProperty("penColor")).toBe(true);
@@ -59,12 +63,59 @@ describe('projects behavior tests', function(){
     expect(oldColor).toBe([0,0,0,0]);
     expect(testProject.penColor).toBe([1,2,3,4]);
   });
-  it("projects have a color depth property", function(){
+  it("projects can copy a preexisting slide", function(){
     var testProject = new Project()
-    expect(testProject.hasOwnProperty("colorDepth")).toBe(true);
+    testProject.newSlide()
+    testProject.setWorkingSlide(0)
+    testProject.setPenColor([1,2,3,4])
+    testProject.workingSlide.setColorAt({x:0, y:0})
+    testProject.copySlide(0)
+    var oldSlide = testProject.slides[0]
+    var newSlide = testProject.slides[1]
+    expect(newSlide.pixels[0][0]).toBe(oldSlide.pixels[0][0]);
   });
-  it("projects have a slides property", function(){
+  it("projects can add slides to animationQueue", function(){
     var testProject = new Project()
-    expect(testProject.hasOwnProperty("slides")).toBe(true);
+    testProject.newSlide()
+    testProject.setWorkingSlide(0)
+    testProject.setPenColor([1,2,3,4])
+    testProject.workingSlide.setColorAt({x:0, y:0})
+    testProject.copySlide(0)
+    testProject.setWorkingSlide(1)
+    testProject.setPenColor([2,2,3,4])
+    testProject.workingSlide.setColorAt({x:1, y:0})
+    testProject.copySlide(1)
+    testProject.setWorkingSlide(2)
+    testProject.setPenColor([3,2,3,4])
+    testProject.workingSlide.setColorAt({x:2, y:0})
+    testProject.addAnimationQueue(1)
+    testProject.addAnimationQueue(2)
+    expect(testProject.animationQueue.length).toBe(2);
+    expect(testProject.animationQueue[0].constructor.name).toBe("Slide");
+    expect(testProject.animationQueue[0].pixels[0][1]).toBe([2,2,3,4]);
+  });
+  it("projects can switch order of slides in animationQueue", function(){
+    var testProject = new Project()
+    testProject.newSlide()
+    testProject.setWorkingSlide(0)
+    testProject.setPenColor([1,2,3,4])
+    testProject.workingSlide.setColorAt({x:0, y:0})
+    testProject.copySlide(0)
+    testProject.setWorkingSlide(1)
+    testProject.setPenColor([2,2,3,4])
+    testProject.workingSlide.setColorAt({x:1, y:0})
+    testProject.copySlide(1)
+    testProject.setWorkingSlide(2)
+    testProject.setPenColor([3,2,3,4])
+    testProject.workingSlide.setColorAt({x:2, y:0})
+    testProject.addAnimationQueue(1)
+    testProject.addAnimationQueue(2)
+    expect(testProject.animationQueue[0].pixels[0][1]).toBe([2,2,3,4]);
+    testProject.queueSlideMoveUp(1)
+    expect(testProject.animationQueue[0].pixels[0][2]).toBe([3,2,3,4]);
+    expect(testProject.animationQueue[1].pixels[0][1]).toBe([2,2,3,4]);
+    testProject.queueSlideMoveDown(0)
+    expect(testProject.animationQueue[1].pixels[0][2]).toBe([3,2,3,4]);
+    expect(testProject.animationQueue[0].pixels[0][1]).toBe([2,2,3,4]);
   });
 })
