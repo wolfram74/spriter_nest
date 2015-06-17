@@ -45,14 +45,14 @@ describe('projects behavior tests', function(){
     var startingLength = testProject.slides.length
     testProject.newSlide()
     var newLength = testProject.slides.length
-    var product = testProject.slides.pop()
+    var product = testProject.slides[0]
     expect(newLength-startingLength).toBe(1);
     expect(product.constructor.name).toBe("Slide");
   });
   it("projects give slides default proportions", function(){
     var testProject = new Project({defaultWidth: 75})
     testProject.newSlide()
-    var newSlide = testProject.pop()
+    var newSlide = testProject.slides[0]
     expect(newSlide.height).toBe(testProject.defaultHeight);
     expect(newSlide.width).toBe(testProject.defaultWidth);
   });

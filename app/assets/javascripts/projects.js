@@ -12,4 +12,13 @@ function Project (args){
   this.slides = []
   this.animationQueue = []
   this.workingSlide = null
- };
+};
+
+Project.prototype.newSlide = function(args){
+  var defaults = {width: this.defaultWidth, height: this.defaultHeight, project: this}
+  args = utilities.merge(defaults, args)
+  this.slides.push(new Slide(args))
+  if (this.slides.length === 1){
+    this.workingSlide = this.slides[0]
+  };
+};
