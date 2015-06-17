@@ -60,8 +60,8 @@ describe('projects behavior tests', function(){
     var testProject = new Project({colorDepth:256})
     var oldColor = testProject.penColor
     testProject.setPenColor([1,2,3,4])
-    expect(oldColor).toBe([0,0,0,0]);
-    expect(testProject.penColor).toBe([1,2,3,4]);
+    expect(oldColor).toEqual([0,0,0,0]);
+    expect(testProject.penColor).toEqual([1,2,3,4]);
   });
   it("projects can copy a preexisting slide", function(){
     var testProject = new Project()
@@ -72,6 +72,7 @@ describe('projects behavior tests', function(){
     testProject.copySlide(0)
     var oldSlide = testProject.slides[0]
     var newSlide = testProject.slides[1]
+    expect(oldSlide.pixels[0][0]).toBe([1,2,3,4]);
     expect(newSlide.pixels[0][0]).toBe(oldSlide.pixels[0][0]);
   });
   it("projects can add slides to animationQueue", function(){

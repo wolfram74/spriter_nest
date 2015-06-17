@@ -31,8 +31,11 @@ describe('slides behavior tests', function(){
     var testProject = new Project({defaultWidth: 10, defaultHeight:10, colorDept: 256})
     testProject.newSlide()
     testProject.setWorkingSlide(0)
-    testProject.setPenColor([1,2,3,4])
+    var color = [1,2,3,4]
+    testProject.setPenColor(color)
+    console.log(testProject.penColor, "new pen color")
     testProject.workingSlide.setColorAt({x:0, y:0})
-    expect(testProject.pixels[0][0]).toBe([1,2,3,4]);
+    console.log(testProject.workingSlide.pixels)
+    expect(testProject.workingSlide.pixels[0][0]).toEqual(color);
   });
 })

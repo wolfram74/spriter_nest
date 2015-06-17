@@ -22,3 +22,22 @@ Project.prototype.newSlide = function(args){
     this.workingSlide = this.slides[0]
   };
 };
+
+Project.prototype.setPenColor = function(rgbaArray){
+  for(i in this.penColor){
+    this.penColor[i] = rgbaArray[i];
+  };
+};
+
+Project.prototype.setWorkingSlide = function(index){
+  this.workingSlide = this.slides[index]
+};
+
+Project.prototype.copySlide = function(index){
+  var tempSlide = this.slides[index]
+  this.newSlide({pixels: tempSlide.pixels})
+};
+
+Project.prototype.addAnimationQueue = function(index){
+  this.animationQueue.push(this.slides[index])
+}
