@@ -4,7 +4,7 @@ describe('projects meta tests', function(){
   });
 })
 
-describe('projects property tests', function(){
+describe('projects properties:', function(){
   it("projects have a user_id property", function(){
     var testProject = new Project()
     expect(testProject.hasOwnProperty("userID")).toBe(true);
