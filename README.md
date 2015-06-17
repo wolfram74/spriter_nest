@@ -1,7 +1,7 @@
 # spriter_nest
 ## user stories
 ### mark 1 features
-* user can log in with imgur
+* user can log in with imgur ~
 * user can start a project
 * user can specify the dimensions of a slide
 * user can specify the color depth between 16bit pallette and 32 bit pallet (RGBA)

@@ -37,3 +37,10 @@ response type is just going to be token, it's much more direct, pin leads to bad
 client id is fairly straightforward.
 
 png's up to 1meg in size will remain as png's and be lossless. Explore javascript manipulations and saving with pngs... this should continue to be the case well into the 400k pixel regime.
+
+== notes on implementation
+users have many projects
+projects have many slides
+projects have default slide proportions
+projects have a color depth
+slides
