@@ -1,11 +1,11 @@
 utilities = (function(){
   var API = {}
+  var privateVariable = []
+  var cache = []
   API.merge = function merge(baseObject, injectedObject){
     newObject = API.clone(baseObject)
-    // console.log(baseObject, injectedObject)
     for(var key in injectedObject){
       newObject[key] = injectedObject[key];
-      // console.log(key ,baseObject[key], injectedObject[key])
     };
     return newObject
   };
@@ -49,5 +49,4 @@ utilities = (function(){
   }
   
   return API
-
 })()
