@@ -12,9 +12,9 @@
 ### mark 2 features
 * user can have many slides in a project
 * user can start with template that has pre-populated dimensions or slide numbers.
-* user can underlay images on a slide to rotoscope
 * user can rearrange the order of slides
 * user can select a collection of slides and animate them in order.
+* user can underlay images on a slide to rotoscope
 * user can undo changes to projects during a session
 
 ### mark 3 features
