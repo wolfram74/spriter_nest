@@ -1,7 +1,5 @@
 utilities = (function(){
   var API = {}
-  var privateVariable = []
-  var cache = []
   API.merge = function merge(baseObject, injectedObject){
     newObject = API.clone(baseObject)
     for(var key in injectedObject){
@@ -46,7 +44,7 @@ utilities = (function(){
     }
 
     throw new Error("Unable to copy obj! Its type isn't supported.");
-  }
+  };
   
   API.extend = function(){
     var args = [].slice.call(arguments, 0)
@@ -57,7 +55,48 @@ utilities = (function(){
       }
     });
     return left;
-  }
+  };
+
+  API.testGet = function(token){
+    console.log("trying this shit.")
+    $.ajax({
+      type:"GET",
+      url: "https://api.imgur.com/3/account/wolfram074/settings",
+      headers:{
+        Authorization: "Bearer "+token
+      }
+    }).done(function(response){
+      console.log(response)
+    })
+  };
+
+  API.testGet2 = function(token){
+    console.log("trying this shit.")
+    $.ajax({
+      type:"GET",
+      url: "https://api.imgur.com/3/account/wolfram074",
+      headers:{
+        Authorization: "Bearer "+token
+      }
+    }).done(function(response){
+      console.log(response)
+    })
+  };
+
+  API.testPut = function(token, newBio){
+    console.log("trying this shit.")
+    $.ajax({
+      type:"PUT",
+      url: "https://api.imgur.com/3/account/wolfram074/settings",
+      headers:{
+        Authorization: "Bearer "+token
+      },
+      data:{bio: newBio}
+    }).done(function(response){
+      console.log(response)
+    })
+  };
+
 
   return API
 })()
