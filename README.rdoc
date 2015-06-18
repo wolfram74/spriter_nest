@@ -38,6 +38,8 @@ client id is fairly straightforward.
 
 png's up to 1meg in size will remain as png's and be lossless. Explore javascript manipulations and saving with pngs... this should continue to be the case well into the 400k pixel regime.
 
+https://api.imgur.com/3/
+
 == nested array to canvas
 don't be a pillock, that's easy
 
@@ -63,3 +65,10 @@ projects can save to png and be stored in imgur
 projects can load from imgur
 
 slides respond to #setAt which sets at the x-y coordinate a new rgba value. t
+
+== program flow
+/ (unauthed) login with imgur
+/ (authed) link to projects directory
+/user/:id/projects list of projects
+/user/:id/projects/:id project editing page
+

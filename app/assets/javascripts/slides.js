@@ -1,19 +1,20 @@
 function Slide (args){
   var defaults = {
     width:16 ,height:26, 
-    projectID:null, project: new Project(), pixels: null
+    projectID:null, project: new Project(), 
+    pixels: null, ID: null
   };
   args = utilities.merge(defaults, args)
   this.width = args["width"] 
   this.height = args["height"]
-  this.projectID = args["projectID"]
   this.project = args["project"]
+  this.projectID = this.project.ID
   if (!args["pixels"]){
     this.pixels = this.blankPixels()
   }else{
     this.pixels = args["pixels"]
   }
-  
+  this.ID = args["ID"]
 };
 
 Slide.prototype.setColorAt = function(args){

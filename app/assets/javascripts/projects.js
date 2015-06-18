@@ -1,12 +1,14 @@
 function Project (args){
   var defaults = {
     defaultWidth:16 ,defaultHeight:26, 
-    colorDepth:256, userID:null, penColor:[0,0,0,0]
+    colorDepth:256, userID:null, penColor:[0,0,0,0],
+    ID: null
   };
   args = utilities.merge(defaults, args)
   this.defaultWidth = args["defaultWidth"] 
   this.defaultHeight = args["defaultHeight"]
   this.colorDepth = args["colorDepth"]
+  this.ID = args["ID"]
   this.userID = args["userID"]
   this.penColor = args["penColor"]
   this.slides = []
