@@ -16,7 +16,8 @@ function Project (args){
 
 Project.prototype.newSlide = function(args){
   var defaults = {width: this.defaultWidth, height: this.defaultHeight, project: this}
-  args = utilities.merge(defaults, args)
+  // args = utilities.merge(defaults, args)
+  args = utilities.extend({}, defaults, args)
   this.slides.push(new Slide(args))
   if (this.slides.length === 1){
     this.workingSlide = this.slides[0]
@@ -24,7 +25,7 @@ Project.prototype.newSlide = function(args){
 };
 
 Project.prototype.setPenColor = function(rgbaArray){
-  for(i in this.penColor){
+  for(var i in this.penColor){
     this.penColor[i] = rgbaArray[i];
   };
 };

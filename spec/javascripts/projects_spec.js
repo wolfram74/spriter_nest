@@ -58,10 +58,11 @@ describe('projects behavior tests', function(){
   });
   it("projects can set penColor", function(){
     var testProject = new Project({colorDepth:256})
-    var oldColor = testProject.penColor
-    testProject.setPenColor([1,2,3,4])
+    var oldColor = utilities.clone(testProject.penColor)
+    var testColor = [1,2,3,4]
+    testProject.setPenColor(testColor)
     expect(oldColor).toEqual([0,0,0,0]);
-    expect(testProject.penColor).toEqual([1,2,3,4]);
+    expect(testProject.penColor).toEqual(testColor);
   });
   it("projects can copy a preexisting slide", function(){
     var testProject = new Project()
