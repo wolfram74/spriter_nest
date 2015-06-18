@@ -73,8 +73,8 @@ describe('projects behavior tests', function(){
     testProject.copySlide(0)
     var oldSlide = testProject.slides[0]
     var newSlide = testProject.slides[1]
-    expect(oldSlide.pixels[0][0]).toBe([1,2,3,4]);
-    expect(newSlide.pixels[0][0]).toBe(oldSlide.pixels[0][0]);
+    expect(oldSlide.pixels[0][0]).toEqual([1,2,3,4]);
+    expect(newSlide.pixels[0][0]).toEqual(oldSlide.pixels[0][0]);
   });
   it("projects can add slides to animationQueue", function(){
     var testProject = new Project()
@@ -94,7 +94,7 @@ describe('projects behavior tests', function(){
     testProject.addAnimationQueue(2)
     expect(testProject.animationQueue.length).toBe(2);
     expect(testProject.animationQueue[0].constructor.name).toBe("Slide");
-    expect(testProject.animationQueue[0].pixels[0][1]).toBe([2,2,3,4]);
+    expect(testProject.animationQueue[0].pixels[0][1]).toEqual([2,2,3,4]);
   });
   it("projects can switch order of slides in animationQueue", function(){
     var testProject = new Project()
@@ -112,12 +112,12 @@ describe('projects behavior tests', function(){
     testProject.workingSlide.setColorAt({x:2, y:0})
     testProject.addAnimationQueue(1)
     testProject.addAnimationQueue(2)
-    expect(testProject.animationQueue[0].pixels[0][1]).toBe([2,2,3,4]);
-    testProject.queueSlideMoveUp(1)
-    expect(testProject.animationQueue[0].pixels[0][2]).toBe([3,2,3,4]);
-    expect(testProject.animationQueue[1].pixels[0][1]).toBe([2,2,3,4]);
-    testProject.queueSlideMoveDown(0)
-    expect(testProject.animationQueue[1].pixels[0][2]).toBe([3,2,3,4]);
-    expect(testProject.animationQueue[0].pixels[0][1]).toBe([2,2,3,4]);
+    expect(testProject.animationQueue[0].pixels[0][1]).toEqual([2,2,3,4]);
+    testProject.queueSlideMove({index:1, shift: -1})
+    expect(testProject.animationQueue[0].pixels[0][2]).toEqual([3,2,3,4]);
+    expect(testProject.animationQueue[1].pixels[0][1]).toEqual([2,2,3,4]);
+    testProject.queueSlideMove({index:0, shift: 1})
+    expect(testProject.animationQueue[1].pixels[0][2]).toEqual([3,2,3,4]);
+    expect(testProject.animationQueue[0].pixels[0][1]).toEqual([2,2,3,4]);
   });
 })

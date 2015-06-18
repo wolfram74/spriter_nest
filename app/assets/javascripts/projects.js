@@ -42,3 +42,11 @@ Project.prototype.copySlide = function(index){
 Project.prototype.addAnimationQueue = function(index){
   this.animationQueue.push(this.slides[index])
 }
+
+Project.prototype.queueSlideMove = function(args){
+  var subject = args["index"]
+  var target = args["index"] + args["shift"]
+  var temp = this.animationQueue[subject]
+  this.animationQueue[subject] = this.animationQueue[target]
+  this.animationQueue[target] = temp
+};
