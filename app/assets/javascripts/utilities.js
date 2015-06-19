@@ -97,6 +97,24 @@ utilities = (function(){
     })
   };
 
+  API.testAlbumMake = function(token){
+    console.log("trying this shit.")
+    $.ajax({
+      type:"POST",
+      url: "https://api.imgur.com/3/album",
+      headers:{
+        Authorization: "Bearer "+token
+      },
+      data:{
+        title: "spriter nest projects",
+        layout: "vertical"
+      }
+    }).done(function(response){
+      console.log(response)
+    })
+  };
+
+
 
   return API
 })()
