@@ -16,3 +16,4 @@
 //= require utilities
 //= require slides
 //= require projects
+//= require clientController

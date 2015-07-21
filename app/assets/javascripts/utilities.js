@@ -116,3 +116,22 @@ utilities = (function(){
 
   return API
 })()
+
+imgurAPI = (function(){
+  var API = {}
+
+  API.getGalleries =function(token){
+    console.log("trying this shit.")
+    $.ajax({
+      type:"GET",
+      url: "https://api.imgur.com/3/account/wolfram074/settings",
+      headers:{
+        Authorization: "Bearer "+token
+      }
+    }).done(function(response){
+      console.log(response)
+    })
+
+  }
+  return API
+})()

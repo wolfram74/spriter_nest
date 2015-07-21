@@ -29,7 +29,7 @@ Please feel free to use a different markup language if you do not plan to run
 
 == Starting development server
 instead of "rails s"
-use "thin start --ssl"
+use "thin start --ssl" if https becomes a problem
 
 
 ==notes on imgur oauth (docs https://api.imgur.com/oauth2)
@@ -43,7 +43,7 @@ client id is fairly straightforward.
 
 png's up to 1meg in size will remain as png's and be lossless. Explore javascript manipulations and saving with pngs... this should continue to be the case well into the 400k pixel regime.
 
-https://api.imgur.com/3/
+https://api.imgur.com/
 
 == nested array to canvas
 don't be a pillock, that's easy
