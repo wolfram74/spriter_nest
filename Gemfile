@@ -10,7 +10,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+# gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -29,6 +29,7 @@ gem 'httparty', '~> 0.13.5'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'jasmine-rails'
+  gem 'shoulda-matchers'
 end
 
 # Use ActiveModel has_secure_password
