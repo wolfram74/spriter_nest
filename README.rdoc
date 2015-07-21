@@ -62,10 +62,10 @@ projects have a color depth t
 slides have X by Y nested arrays with RGBA vectors as values(default is 0's). t
 slides belong to project t
 
-project can generate a new blank slide t
-project can generate a new slide copied from an old slide. t
-project can select color for new pixels t
-projects can select collections of frames to iterate over in animation mode t
+project can generate a new blank slide T
+project can generate a new slide copied from an old slide. T
+project can select color for new pixels T
+projects can select collections of frames to iterate over in animation mode T
 projects can save to png and be stored in imgur
 projects can load from imgur
 

@@ -1,0 +1,2 @@
+class SlidesController < ApplicationController
+end
