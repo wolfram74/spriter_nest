@@ -120,15 +120,41 @@ utilities = (function(){
 imgurAPI = (function(){
   var API = {}
 
-  API.getGalleries =function(token){
-    console.log("trying this shit.")
+  API.getAlbums = function(username, token){
+    console.log("fetching albums.")
+    var url = "https://api.imgur.com/3/account/"+username+"/albums"
     $.ajax({
       type:"GET",
-      url: "https://api.imgur.com/3/account/wolfram074/settings",
+      url: url,
       headers:{
         Authorization: "Bearer "+token
       }
     }).done(function(response){
+      console.log("Imgur has gone ok")
+    }).fail(function(response){
+      console.log("Imgur has gone pear shaped")
+    }).always(function(response){
+      console.log(response)
+    })
+  }
+
+  API.postAlbum = function(title, token){
+    console.log("Creating album.")
+    $.ajax({
+      type:"POST",
+      url: "https://api.imgur.com/3/album",
+      headers:{
+        Authorization: "Bearer "+token
+      },
+      data:{
+        title: title,
+        layout: "vertical"
+      }
+    }).done(function(response){
+      console.log("Imgur has gone ok")
+    }).fail(function(response){
+      console.log("Imgur has gone pear shaped")
+    }).always(function(response){
       console.log(response)
     })
 
