@@ -27,6 +27,11 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
+== Starting development server
+instead of "rails s"
+use "thin start --ssl"
+
+
 ==notes on imgur oauth (docs https://api.imgur.com/oauth2)
 
 authorization URL
@@ -75,3 +80,4 @@ slides respond to #setAt which sets at the x-y coordinate a new rgba value. t
 === new users process
 login with oauth
 80k, 25k options
+
