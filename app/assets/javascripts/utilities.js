@@ -114,9 +114,5 @@ utilities = (function(){
     })
   };
 
-
-
   return API
 })()
-
-utilities.replaceAt("rtae",0, "read")

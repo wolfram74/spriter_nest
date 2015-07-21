@@ -72,3 +72,6 @@ slides respond to #setAt which sets at the x-y coordinate a new rgba value. t
 /user/:id/projects list of projects
 /user/:id/projects/:id project editing page
 
+=== new users process
+login with oauth
+80k, 25k options
