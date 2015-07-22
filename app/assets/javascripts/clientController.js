@@ -17,6 +17,7 @@ clientController = (function(){
       API.authState[pair[0]] = pair[1]
     };
     console.log(API.authState)
+    window.history.pushState("authed", "authed", "/")
   };
   return API
 })()
