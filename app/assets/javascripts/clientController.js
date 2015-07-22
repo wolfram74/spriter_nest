@@ -19,5 +19,7 @@ clientController = (function(){
     console.log(API.authState)
     window.history.pushState("authed", "authed", "/")
   };
+
+  
   return API
 })()
