@@ -63,26 +63,24 @@ imgurAPI = (function(){
   var API = {};
   var urlPrefix = "https://api.imgur.com/3";
   API.getAlbums = function(username, token){
-    console.log("fetching albums.");
-    var url = urlPrefix + "/account/" + username + "/albums";
-    var call = $.ajax({
-      type:"GET",
-      url: url,
-      headers:{
-        Authorization: "Bearer "+token
-      }
+    return new Promise(function(resolve, reject){
+      console.log("fetching albums.");
+      var url = urlPrefix + "/account/" + username + "/albums";
+      var request = $.ajax({
+        type:"GET",
+        url: url,
+        headers:{
+          Authorization: "Bearer "+token
+        }
+      })
+      request.done(function(response){
+        resolve(response)
+      })
+      request.fail(function(response){
+        console.log("fuck, it's borked")
+        reject(response)
+      })
     })
-
-    call.done(function(response){
-      console.log("Imgur has gone ok");
-    })
-    call.fail(function(response){
-      console.log("Imgur has gone pear shaped");
-    })
-    call.always(function(response){
-      console.log(response);
-    })
-    return call
   };
 
   API.postAlbum = function(title, token){
@@ -155,6 +153,7 @@ imgurAPI = (function(){
     call.always(function(response){
       console.log(response);
     })
+    return call
   };
 
   return API
