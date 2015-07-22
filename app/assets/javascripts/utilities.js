@@ -111,31 +111,29 @@ imgurAPI = (function(){
   API.getAlbumContent = function(albumID, token){
     console.log("fetching images.");
     var url = urlPrefix + "/album/" + albumID + "/images";
-    var call = $.ajax({
+    var request = $.ajax({
       type:"GET",
       url: url,
       headers:{
         Authorization: "Bearer "+token
       }
     })
-    call.done(function(response){
-      console.log("Imgur has gone ok");
+    return new Promise(function(resolve, reject){
+      request.done(function(response){
+        resolve(response);
+      })
+      request.fail(function(response){
+        console.log("Imgur has gone pear shaped");
+        reject(response);
+      })      
     })
-    call.fail(function(response){
-      console.log("Imgur has gone pear shaped");
-    })
-    call.always(function(response){
-      console.log(response);
-    })
-    return call
   };
   
   API.postImageToAlbum = function(args){
     // args requires imageURL, albumID, name, token
     console.log("posting images.");
     var url = urlPrefix + "/image";
-
-    var call = $.ajax({
+    var request = $.ajax({
       type:"GET",
       url: url,
       data: args,
@@ -143,16 +141,15 @@ imgurAPI = (function(){
         Authorization: "Bearer "+token
       }
     })
-    call.done(function(response){
-      console.log("Imgur has gone ok");
+    return new Promise(function(resolve, reject){
+      request.done(function(response){
+        resolve(response);
+      })
+      request.fail(function(response){
+        console.log("Imgur has gone pear shaped");
+        reject(response);
+      })      
     })
-    call.fail(function(response){
-      console.log("Imgur has gone pear shaped");
-    })
-    call.always(function(response){
-      console.log(response);
-    })
-    return call
   };
 
   return API
