@@ -33,21 +33,16 @@ clientController = (function(){
   };
 
   API.setProjectsAlbumID = function(){
-    // if(API.authState.hasOwnProperty("albumID")){
-    //   return API.authState.albumID
-    // };
     if (API.authState.albumID){
+      console.log("shit was so cache");
       return Promise.resolve(API.authState.albumID)
     }
     return imgurAPI.getAlbums(
       API.authState.account_username, 
       API.authState.access_token
     ).then(function(response){
-      console.log("setter promise")
-      console.log(response)
-      console.log(response.data)
-      console.log(response.data[0])
-      data = response.data
+      console.log("setter promise");
+      var data = response.data;
       for(var index in data){
         if (data[index].title === env.albumTitle){
           API.authState.albumID = data[index].id;
@@ -58,18 +53,18 @@ clientController = (function(){
   };
 
   API.makeProjectsAlbum = function(){
-
+    if (!!API.authState.albumID){
+      console.log("shit was so cache")
+      return Promise.resolve(API.authState.albumID);
+    };
+    return imgurAPI.postAlbum(
+      env.albumTitle, 
+      API.authState.access_token
+    ).then(function(response){
+      API.authState.albumID = response.data.id
+      return API.authState.albumID
+    })
   }
-    // if(API.authState.albumID === undefined){
-    //   return imgurAPI.postAlbum(
-    //     env.albumTitle, 
-    //     API.authState.access_token
-    //   ).done(function(response){
-    //     console.log(response.data)
-    //     API.authState.albumID = response.data.id
-    //     return API.authState.albumID
-    //   });
-    
 
   API.uploadCanvas = function(canvas){
     var img = canvas.toDataURL("image/png")

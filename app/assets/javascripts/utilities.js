@@ -63,16 +63,16 @@ imgurAPI = (function(){
   var API = {};
   var urlPrefix = "https://api.imgur.com/3";
   API.getAlbums = function(username, token){
+    console.log("fetching albums.");
+    var url = urlPrefix + "/account/" + username + "/albums";
+    var request = $.ajax({
+      type:"GET",
+      url: url,
+      headers:{
+        Authorization: "Bearer "+token
+      }
+    })
     return new Promise(function(resolve, reject){
-      console.log("fetching albums.");
-      var url = urlPrefix + "/account/" + username + "/albums";
-      var request = $.ajax({
-        type:"GET",
-        url: url,
-        headers:{
-          Authorization: "Bearer "+token
-        }
-      })
       request.done(function(response){
         resolve(response)
       })
@@ -86,7 +86,7 @@ imgurAPI = (function(){
   API.postAlbum = function(title, token){
     console.log("Creating album.");
     var url = urlPrefix + "/album";
-    var call = $.ajax({
+    var request = $.ajax({
       type:"POST",
       url: url,
       headers:{
@@ -97,16 +97,15 @@ imgurAPI = (function(){
         layout: "vertical"
       }
     })
-    call.done(function(response){
-      console.log("Imgur has gone ok");
+    return new Promise(function(resolve, reject){
+      request.done(function(response){
+        resolve(response);
+      })
+      request.fail(function(response){
+        console.log("Imgur has gone pear shaped");
+        reject(response);
+      })      
     })
-    call.fail(function(response){
-      console.log("Imgur has gone pear shaped");
-    })
-    call.always(function(response){
-      console.log(response);
-    })
-    return call
   };
 
   API.getAlbumContent = function(albumID, token){
