@@ -65,25 +65,30 @@ imgurAPI = (function(){
   API.getAlbums = function(username, token){
     console.log("fetching albums.");
     var url = urlPrefix + "/account/" + username + "/albums";
-    $.ajax({
+    var call = $.ajax({
       type:"GET",
       url: url,
       headers:{
         Authorization: "Bearer "+token
       }
-    }).done(function(response){
+    })
+
+    call.done(function(response){
       console.log("Imgur has gone ok");
-    }).fail(function(response){
+    })
+    call.fail(function(response){
       console.log("Imgur has gone pear shaped");
-    }).always(function(response){
+    })
+    call.always(function(response){
       console.log(response);
     })
+    return call
   };
 
   API.postAlbum = function(title, token){
     console.log("Creating album.");
     var url = urlPrefix + "/album";
-    $.ajax({
+    var call = $.ajax({
       type:"POST",
       url: url,
       headers:{
@@ -93,31 +98,39 @@ imgurAPI = (function(){
         title: title,
         layout: "vertical"
       }
-    }).done(function(response){
+    })
+    call.done(function(response){
       console.log("Imgur has gone ok");
-    }).fail(function(response){
+    })
+    call.fail(function(response){
       console.log("Imgur has gone pear shaped");
-    }).always(function(response){
+    })
+    call.always(function(response){
       console.log(response);
     })
+    return call
   };
 
   API.getAlbumContent = function(albumID, token){
     console.log("fetching images.");
     var url = urlPrefix + "/album/" + albumID + "/images";
-    $.ajax({
+    var call = $.ajax({
       type:"GET",
       url: url,
       headers:{
         Authorization: "Bearer "+token
       }
-    }).done(function(response){
+    })
+    call.done(function(response){
       console.log("Imgur has gone ok");
-    }).fail(function(response){
+    })
+    call.fail(function(response){
       console.log("Imgur has gone pear shaped");
-    }).always(function(response){
+    })
+    call.always(function(response){
       console.log(response);
     })
+    return call
   };
   
   API.postImageToAlbum = function(args){
@@ -125,18 +138,21 @@ imgurAPI = (function(){
     console.log("posting images.");
     var url = urlPrefix + "/image";
 
-    return $.ajax({
+    var call = $.ajax({
       type:"GET",
       url: url,
       data: args,
       headers:{
         Authorization: "Bearer "+token
       }
-    }).done(function(response){
+    })
+    call.done(function(response){
       console.log("Imgur has gone ok");
-    }).fail(function(response){
+    })
+    call.fail(function(response){
       console.log("Imgur has gone pear shaped");
-    }).always(function(response){
+    })
+    call.always(function(response){
       console.log(response);
     })
   };
