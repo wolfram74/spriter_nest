@@ -120,5 +120,26 @@ imgurAPI = (function(){
     })
   };
   
+  API.postImageToAlbum = function(args){
+    // args requires imageURL, albumID, name, token
+    console.log("posting images.");
+    var url = urlPrefix + "/image";
+
+    return $.ajax({
+      type:"GET",
+      url: url,
+      data: args,
+      headers:{
+        Authorization: "Bearer "+token
+      }
+    }).done(function(response){
+      console.log("Imgur has gone ok");
+    }).fail(function(response){
+      console.log("Imgur has gone pear shaped");
+    }).always(function(response){
+      console.log(response);
+    })
+  };
+
   return API
 })()

@@ -3,11 +3,13 @@ $(document).ready(function(){
     console.log("hash present")
     clientController.hashParser(window.location.hash)
   }else{ console.log("no hash present")}
+  testCanvas = clientController.grabYatta()
 });
 
 clientController = (function(){
   var API = {}
   API.authState = {}
+  var env = {albumTitle = "Spriter Nest Projects"}
   API.hashParser = function(string){
     string = string.slice(1)
     var terms = string.split("&")
@@ -20,6 +22,45 @@ clientController = (function(){
     window.history.pushState("authed", "authed", "/")
   };
 
-  
+  API.grabYatta = function(){
+    console.log("grabbing")
+    var img = $("img")[0]
+    var canvas = $("<canvas/>")[0]
+    canvas.width = img.width
+    canvas.height = img.height  
+    canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height)
+    return canvas
+  };
+
+  API.findProjectsAlbumID = function(){
+    if(API.authState.hasOwnProperty("albumID")){
+      return API.authState.albumID};
+    return imgurAPI.getAlbums(
+      API.authState.account_username, 
+      API.authState.access_token
+      ).done(function(response){
+        for(var album in data){
+          if (album.title === env.albumTitle){
+            API.authState.albumID = album.id;
+          };
+        };
+      });
+    if(API.authState.albumID === undefined){
+      return imgurAPI.postAlbum(
+        env.albumTitle, 
+        API.authState.access_token
+      ).done(function(response){
+        console.log(response.data)
+        API.authState.albumID = response.data.id
+        return API.authState.albumID
+      });
+    };
+  };
+
+  API.uploadCanvas = function(canvas){
+    var img = canvas.toDataURL("image/png")
+    // imgurAPI.postImageToAlbum
+  };
+
   return API
 })()
