@@ -3,12 +3,12 @@ $(document).ready(function(){
     console.log("hash present")
     clientController.hashParser(window.location.hash)
   }else{ console.log("no hash present")}
-  testCanvas = clientController.grabYatta()
 });
 
 clientController = (function(){
   var API = {}
   API.authState = {}
+  API.projectState = {}
   var env = {albumTitle: "Spriter Nest Projects"}
   API.hashParser = function(string){
     string = string.slice(1)
@@ -68,8 +68,20 @@ clientController = (function(){
 
   API.uploadCanvas = function(canvas){
     var img = canvas.toDataURL("image/png")
-    // imgurAPI.postImageToAlbum
+    console.log(img)
+    var data = {
+      image: img, 
+      album: API.authState.albumID,
+      name: "yatta",
+      token: API.authState.access_token
+    }
+    imgurAPI.postImageToAlbum(data)
   };
 
   return API
 })()
+
+function testPrep(){
+  clientController.projectState.projectCanvas = clientController.grabYatta()
+  clientController.setProjectsAlbumID()
+};
