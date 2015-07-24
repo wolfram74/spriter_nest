@@ -68,31 +68,57 @@ clientController = (function(){
   }
 
   API.uploadImage = function(img){
-    console.log(img)
+    // console.log(img)
     var data = {
       image: img, 
       album: API.authState.albumID,
       name: "yatta",
       token: API.authState.access_token,
-      type: "base64"
+      type: "binary file"
 
     }
-    imgurAPI.postImageToAlbum(data)
+    return imgurAPI.postImageToAlbum(data)
   };
 
   return API
 })()
 
-function testPrep(){
+function testPost(){
   clientController.setProjectsAlbumID().then(function(response){
     clientController.grabYatta()
     var data = clientController.projectState.projectCanvas.toDataURL("image/png")
-    data = data.replace(/\+/g,"%2B")
-    data = data.replace(/\//g,"%2F")
-    data = data.replace(/=/g,"%3D")
-    return data
+    return data.split(",")[1]
   }).then(function(response){
-    console.log(response)
-    clientController.uploadImage(response)
+    clientController.uploadImage(response).then(function(response){
+      console.log(response)
+    })
   })
 };
+
+function testGet(){
+ clientController.setProjectsAlbumID().then(function(response){
+  return imgurAPI.getAlbumContent(
+    clientController.authState.albumID,
+    clientController.authState.access_token
+    )
+ }).then(function(response){
+  var images = response.data;
+  for(index in images){
+    var $img = $("<img/>")
+    $img.attr("src", images[index].link.replace("p", "ps"))
+    $("body").append($img)
+  }
+ })
+}
+/*
+
+var img = new Image();
+img.crossOrigin = "Anonymous";
+img.src = $("img")[1].src;
+var canvas = $('<canvas/>')[0];
+canvas.width = img.width;
+canvas.height = img.height;
+canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+canvas.getContext('2d').getImageData(50,100,1,1);
+
+*/
