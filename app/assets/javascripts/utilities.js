@@ -133,14 +133,16 @@ imgurAPI = (function(){
     // args requires imageURL, albumID, name, token
     console.log("posting images.");
     var url = urlPrefix + "/image";
+    console.log(args.image)
     var data = {
       image: args.image,
       album: args.album,
-      name: args.name
+      name: args.name,
+      type: args.type
     }
     console.log(args.token)
     var request = $.ajax({
-      type:"GET",
+      type:"POST",
       url: url,
       data: data,
       headers:{

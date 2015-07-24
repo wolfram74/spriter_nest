@@ -29,6 +29,7 @@ clientController = (function(){
     canvas.width = img.width
     canvas.height = img.height  
     canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height)
+    clientController.projectState.projectCanvas = canvas
     return canvas
   };
 
@@ -66,14 +67,15 @@ clientController = (function(){
     })
   }
 
-  API.uploadCanvas = function(canvas){
-    var img = canvas.toDataURL("image/png")
+  API.uploadImage = function(img){
     console.log(img)
     var data = {
       image: img, 
       album: API.authState.albumID,
       name: "yatta",
-      token: API.authState.access_token
+      token: API.authState.access_token,
+      type: "base64"
+
     }
     imgurAPI.postImageToAlbum(data)
   };
@@ -82,6 +84,15 @@ clientController = (function(){
 })()
 
 function testPrep(){
-  clientController.projectState.projectCanvas = clientController.grabYatta()
-  clientController.setProjectsAlbumID()
+  clientController.setProjectsAlbumID().then(function(response){
+    clientController.grabYatta()
+    var data = clientController.projectState.projectCanvas.toDataURL("image/png")
+    data = data.replace(/\+/g,"%2B")
+    data = data.replace(/\//g,"%2F")
+    data = data.replace(/=/g,"%3D")
+    return data
+  }).then(function(response){
+    console.log(response)
+    clientController.uploadImage(response)
+  })
 };
