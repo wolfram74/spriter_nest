@@ -22,6 +22,8 @@ clientController = (function(){
     window.history.pushState("authed", "authed", "/")
   };
 
+  API.refreshAuth = function()
+
   API.grabYatta = function(){
     console.log("grabbing")
     var img = $("img")[0]
