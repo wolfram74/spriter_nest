@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'httparty', '~> 0.13.5'
-
+#https://github.com/leshill/handlebars_assets maybe?
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'jasmine-rails'
