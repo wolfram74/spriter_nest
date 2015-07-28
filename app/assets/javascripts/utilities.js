@@ -62,14 +62,16 @@ utilities = (function(){
 imgurAPI = (function(){
   var API = {};
   var urlPrefix = "https://api.imgur.com/3";
-  API.getAlbums = function(username, token){
+  API.getAlbums = function(args){
+    // expects a username and token in args
+    console.log(args)
     console.log("fetching albums.");
-    var url = urlPrefix + "/account/" + username + "/albums";
+    var url = urlPrefix + "/account/" + args.username + "/albums";
     var request = $.ajax({
       type:"GET",
       url: url,
       headers:{
-        Authorization: "Bearer "+token
+        Authorization: "Bearer "+args.token
       }
     })
     return new Promise(function(resolve, reject){
@@ -83,17 +85,18 @@ imgurAPI = (function(){
     })
   };
 
-  API.postAlbum = function(title, token){
+  API.postAlbum = function(args){
+    // expects a title and token in args
     console.log("Creating album.");
     var url = urlPrefix + "/album";
     var request = $.ajax({
       type:"POST",
       url: url,
       headers:{
-        Authorization: "Bearer "+token
+        Authorization: "Bearer "+args.token
       },
       data:{
-        title: title,
+        title: args.title,
         layout: "vertical"
       }
     })
@@ -108,14 +111,15 @@ imgurAPI = (function(){
     })
   };
 
-  API.getAlbumContent = function(albumID, token){
+  API.getAlbumContent = function(args){
+    // expects albumID and token in args
     console.log("fetching images.");
-    var url = urlPrefix + "/album/" + albumID + "/images";
+    var url = urlPrefix + "/album/" + args.albumID + "/images";
     var request = $.ajax({
       type:"GET",
       url: url,
       headers:{
-        Authorization: "Bearer "+token
+        Authorization: "Bearer "+args.token
       }
     })
     return new Promise(function(resolve, reject){

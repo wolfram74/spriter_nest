@@ -53,12 +53,13 @@ clientController = (function(){
       console.log("shit was so cache");
       return Promise.resolve(API.authState.albumID)
     }
-    return imgurAPI.getAlbums(
-      API.authState.account_username, 
-      API.authState.access_token
-    ).then(function(response){
+    return imgurAPI.getAlbums({
+      "username": API.authState.account_username, 
+      "token": API.authState.access_token
+    }).then(function(response){
       console.log("setter promise");
       var data = response.data;
+      console.log(data)
       for(var index in data){
         if (data[index].title === env.albumTitle){
           API.authState.albumID = data[index].id;
@@ -73,10 +74,10 @@ clientController = (function(){
       console.log("shit was so cache")
       return Promise.resolve(API.authState.albumID);
     };
-    return imgurAPI.postAlbum(
-      env.albumTitle, 
-      API.authState.access_token
-    ).then(function(response){
+    return imgurAPI.postAlbum({
+          "title": env.albumTitle, 
+          "token": API.authState.access_token
+        }).then(function(response){
       API.authState.albumID = response.data.id
       return API.authState.albumID
     })
@@ -112,10 +113,10 @@ function testPost(){
 
 function testGet(){
  clientController.setProjectsAlbumID().then(function(response){
-  return imgurAPI.getAlbumContent(
-    clientController.authState.albumID,
-    clientController.authState.access_token
-    )
+  return imgurAPI.getAlbumContent({
+      "albumID": clientController.authState.albumID,
+      "token": clientController.authState.access_token
+    })
  }).then(function(response){
   var images = response.data;
   for(index in images){
