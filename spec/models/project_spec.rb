@@ -15,7 +15,7 @@ RSpec.describe Project, type: :model do
          top: 1, left: 3*i, 
          width: 3, height: 4 )
       end
-      expect(project.to_atlas.keys.length).to equal(3)
+      expect(project.to_atlas.keys.length).to eq(3)
     end
     it "information is positioning data" do
       project = FactoryGirl.build(:project)
@@ -25,7 +25,7 @@ RSpec.describe Project, type: :model do
          top: 1, left: 3*i, 
          width: 3, height: 4 )
       end
-      expect(project.to_atlas["1"].keys.length).to equal(3)
+      expect(project.to_atlas["1"].keys.length).to eq(4)
     end
   end
 end
