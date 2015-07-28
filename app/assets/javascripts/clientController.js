@@ -10,6 +10,7 @@ clientController = (function(){
   API.authState = {}
   API.projectState = {}
   var env = {albumTitle: "Spriter Nest Projects"}
+
   API.hashParser = function(string){
     string = string.slice(1)
     var terms = string.split("&")
@@ -22,7 +23,19 @@ clientController = (function(){
     window.history.pushState("authed", "authed", "/")
   };
 
-  API.refreshAuth = function()
+  API.createUser = function(){
+    console.log("checking with server on user status")
+    var home = window.location.origin
+    var request = $.ajax({
+      type: "POST",
+      url: home+"/users",
+      data: clientController.authState
+    })
+    return new Promise(function (resolve, reject){
+      request.done(function(response){resolve(response)})
+      request.fail(function(response){console.log("fffff");reject(response)})
+    })
+  }
 
   API.grabYatta = function(){
     console.log("grabbing")
