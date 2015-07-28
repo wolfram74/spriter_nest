@@ -122,8 +122,20 @@ function testGet(){
   for(index in images){
     var $img = $("<img/>")
     $img.attr("src", images[index].link.replace("p", "ps"))
+    $img.data("imgur_id", images[index].id)
+    $img.data("deletehash", images[index].deletehash)
     $("body").append($img)
+  };
+  function deleteParse(event){
+    var $img = $(event.target);
+    var data = {
+      id: $img.data("imgur_id"), 
+      token:clientController.authState.access_token
+    };
+    imgurAPI.deleteImage(data).then(function(response){console.log(response)})
   }
+  $("body").on("click", "img", deleteParse)
+
  })
 }
 /*

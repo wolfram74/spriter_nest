@@ -164,5 +164,28 @@ imgurAPI = (function(){
     })
   };
 
+  API.deleteImage = function(args){
+    // expects an image ID and token
+    console.log(args)
+    console.log("To space with you, devil-image!")
+    var url = urlPrefix + "/image/" + args.id
+    var request = $.ajax({
+      type:"DELETE",
+      url: url,
+      headers:{
+        Authorization: "Bearer "+args.token
+      }
+    })
+    return new Promise(function(resolve, reject){
+      request.done(function(response){
+        resolve(response);
+      })
+      request.fail(function(response){
+        console.log("Imgur has gone pear shaped");
+        reject(response);
+      })      
+    })
+  };
+
   return API
 })()
