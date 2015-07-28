@@ -15,7 +15,6 @@ clientController = (function(){
     string = string.slice(1)
     var terms = string.split("&")
     for(var index in terms){
-      console.log(terms[index])
       var pair = terms[index].split("=")
       API.authState[pair[0]] = pair[1]
     };
