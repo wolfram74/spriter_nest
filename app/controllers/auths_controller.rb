@@ -16,9 +16,10 @@ class AuthsController < ApplicationController
     data[:client_id] = Figaro.env.imgur_client_id
     data[:client_secret] = Figaro.env.imgur_client_secret
     response = HTTParty.post("https://api.imgur.com/oauth2/token", :query => data)
-    auth.access_token = response.access_token
-    auth.refresh_token = response.refresh_token
-    auth.save
+    auth.update({
+      access_token: args[:access_token],
+      refresh_token: args[:refresh_token]
+      })
     render json: auth
   end
 
