@@ -17,3 +17,4 @@
 //= require slides
 //= require projects
 //= require clientController
+//= require test_methods
