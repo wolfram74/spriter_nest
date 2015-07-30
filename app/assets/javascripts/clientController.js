@@ -1,8 +1,18 @@
 $(document).ready(function(){
   if(window.location.hash){
     console.log("hash present")
-    clientController.hashParser(window.location.hash).then(
-      )
+    clientController.hashParser(window.location.hash)
+    .then(function(){
+      return clientController.createUser()
+    }).then( function(results){
+      console.log(results)
+      clientController.authState["userID"] = results.id
+      return clientController.getProjects(results)
+    })
+    .then(function(results){
+      view.indexProjects(results)
+      return results
+    })
   }else{ console.log("no hash present")}
 });
 
@@ -39,7 +49,28 @@ var clientController = (function(){
       request.done(function(response){resolve(response)})
       request.fail(function(response){console.log("fffff");reject(response)})
     })
-  }
+  };
+
+  API.getProjects = function(args){
+    var home = window.location.origin
+    var url = home+"/users/"+API.authState.userID + "/projects"
+    var request = $.ajax({
+      type: "GET",
+      url: url,
+      data: clientController.authState
+    })
+    return new Promise(function (resolve, reject){
+      request.done(function(response){resolve(response)})
+      request.fail(function(response){console.log("fffff");reject(response)})
+    })
+  
+    return new Promise(function(resolve, reject){
+      console.log("grabbing projects from database");
+      console.log(API.authState);
+      resolve("happy farts");
+      reject("sad farts");
+    })
+  };
 
   API.grabYatta = function(){
     console.log("grabbing")

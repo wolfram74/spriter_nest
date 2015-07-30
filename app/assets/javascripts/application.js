@@ -19,5 +19,6 @@
 //= require slides
 //= require projects
 //= require clientController
+//= require view
 //= require imgurAPI
 //= require test_methods

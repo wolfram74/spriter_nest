@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def create
     p params
-    User.auth_parse(params)
-    render json: {data: "fart noises"}
+    user = User.auth_parse(params)
+    render json: user
   end
 
   def show

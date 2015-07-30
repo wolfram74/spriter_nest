@@ -17,5 +17,6 @@ class User < ActiveRecord::Base
         refresh_token: args[:refresh_token]
         })
     end
+    User.find_by(name: args[:account_username])
   end
 end
