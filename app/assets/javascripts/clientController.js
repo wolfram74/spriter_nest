@@ -20,6 +20,10 @@ clientController = (function(){
     };
     console.log(API.authState)
     window.history.pushState("authed", "authed", "/")
+    return new Promise(function(resolve, reject){
+      resolve(API.authState);
+      reject({"error":"unauthed"})
+    })
   };
 
   API.createUser = function(){

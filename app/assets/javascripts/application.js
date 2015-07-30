@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars
 //= require turbolinks
 //= require utilities
 //= require slides
 //= require projects
 //= require clientController
+//= require imgurAPI
 //= require test_methods
+//= require_tree ./templates

@@ -71,6 +71,11 @@ GEM
       thor (~> 0.14)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    handlebars_assets (0.20.2)
+      execjs (~> 2.0)
+      multi_json (~> 1.0)
+      sprockets (>= 2.0.0, < 4.0)
+      tilt (~> 1.2)
     httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -202,6 +207,7 @@ DEPENDENCIES
   capybara
   factory_girl_rails (~> 4.0)
   figaro
+  handlebars_assets
   httparty (~> 0.13.5)
   jasmine-rails
   jbuilder (~> 2.0)

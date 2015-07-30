@@ -26,6 +26,7 @@ gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'httparty', '~> 0.13.5'
 #https://github.com/leshill/handlebars_assets maybe?
+gem 'handlebars_assets'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'jasmine-rails'
@@ -33,15 +34,6 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'capybara'
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
