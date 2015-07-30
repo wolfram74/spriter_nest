@@ -1,4 +1,4 @@
-utilities = (function(){
+var utilities = (function(){
   var API = {};
   API.merge = function merge(baseObject, injectedObject){
     newObject = API.clone(baseObject);

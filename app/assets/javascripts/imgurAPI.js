@@ -1,4 +1,4 @@
-imgurAPI = (function(){
+var imgurAPI = (function(){
   var API = {};
   var urlPrefix = "https://api.imgur.com/3";
   API.getAlbums = function(args){

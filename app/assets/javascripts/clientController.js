@@ -1,11 +1,12 @@
 $(document).ready(function(){
   if(window.location.hash){
     console.log("hash present")
-    clientController.hashParser(window.location.hash)
+    clientController.hashParser(window.location.hash).then(
+      )
   }else{ console.log("no hash present")}
 });
 
-clientController = (function(){
+var clientController = (function(){
   var API = {}
   API.authState = {}
   API.projectState = {}
