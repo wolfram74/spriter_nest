@@ -4,7 +4,8 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    
+    user = User.find(params[:user_id])
+    render json: user.projects
   end
 
   def show

@@ -56,20 +56,12 @@ var clientController = (function(){
     var url = home+"/users/"+API.authState.userID + "/projects"
     var request = $.ajax({
       type: "GET",
-      url: url,
-      data: clientController.authState
-    })
+      url: url
+    });
     return new Promise(function (resolve, reject){
       request.done(function(response){resolve(response)})
-      request.fail(function(response){console.log("fffff");reject(response)})
-    })
-  
-    return new Promise(function(resolve, reject){
-      console.log("grabbing projects from database");
-      console.log(API.authState);
-      resolve("happy farts");
-      reject("sad farts");
-    })
+      request.fail(function(response){console.log("project load failure");reject(response)})
+    })  
   };
 
   API.grabYatta = function(){
