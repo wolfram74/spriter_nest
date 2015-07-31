@@ -9,8 +9,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
-
-  end  
+    project = Project.find(params[:id])
+    output = {project: project, sprite_atlas: project.to_atlas}
+    render json: output
+  end
 
   def destroy
 

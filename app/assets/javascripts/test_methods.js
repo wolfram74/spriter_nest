@@ -25,6 +25,19 @@ function testGet(){
 
  })
 }
+
+function testProjectGet(){
+  var request = $.ajax({
+    url: "localhost:3000/users/1/projects/1",
+    type: "GET"
+  })
+
+  request.done(function(results){
+    console.log(results)
+  })
+  return "derped"
+}
+
 /*
 
 var img = new Image();
