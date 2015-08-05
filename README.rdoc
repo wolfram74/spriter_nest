@@ -81,3 +81,8 @@ slides respond to #setAt which sets at the x-y coordinate a new rgba value. t
 login with oauth
 80k, 25k options
 
+=== loading project flow
+1. click image from index
+2. load project info from server
+2a. build 
+3. store image properties in canvas

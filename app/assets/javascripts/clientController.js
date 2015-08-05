@@ -12,6 +12,9 @@ $(document).ready(function(){
     .then(function(results){
       view.indexProjects(results)
       return results
+    }).then(function(results){
+      $("#stage").on("click", "img", clientController.showProjects)
+      return results
     })
   }else{ console.log("no hash present")}
 });
@@ -62,6 +65,12 @@ var clientController = (function(){
       request.done(function(response){resolve(response)})
       request.fail(function(response){console.log("project load failure");reject(response)})
     })  
+  };
+
+  API.showProjects = function(){
+    console.log(event)
+    console.log(event.target)
+    
   };
 
   API.grabYatta = function(){

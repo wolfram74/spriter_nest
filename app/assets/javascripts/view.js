@@ -12,7 +12,11 @@ var view = (function(){
       resolve(data);
       reject(data);
     })
-  }
+  };
+
+  API.showProject = function(data){
+
+  };
 
   return API
 })()

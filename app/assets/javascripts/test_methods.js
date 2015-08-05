@@ -27,8 +27,9 @@ function testGet(){
 }
 
 function testProjectGet(){
+  var home = window.location.origin
   var request = $.ajax({
-    url: "localhost:3000/users/1/projects/1",
+    url: home+"/users/1/projects/1",
     type: "GET"
   })
 
