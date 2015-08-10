@@ -27,23 +27,40 @@ describe("pad properties", function(){
     })
     it("color selector contains a form",function(){
       var color = pad.$dom.find("#jsColorSelect")
-      expect(!!zoom.find("form").length).toEqual(true)
+      expect(!!color.find("form").length).toEqual(true)
     })
     it("color selector shows present color",function(){
       var color = pad.$dom.find("#jsColorSelect")
-      expect(!!zoom.find("#jsCurrent color").length).toEqual(true)
+      expect(!!color.find("#jsCurrentColor").length).toEqual(true)
+      expect(color.find("#jsCurrentColor").is("div")).toEqual(true)
     })
 
     it("virtual dom contains slide selector",function(){
       expect(pad.$dom.find("#jsSlideSelect").is("div")).toEqual(true)
     })
+    it("slide selector contains a form",function(){
+      var selector = pad.$dom.find("#jsSlideSelect")
+      expect(!!selector.find("form").length).toEqual(true)
+    })
 
     it("virtual dom contains slide main stage",function(){
       expect(pad.$dom.find("#jsSlideView").is("div")).toEqual(true)
     })
+    it("slide main stage contains a canvas",function(){
+      var stage = pad.$dom.find("#jsSlideView")
+      expect(!!stage.find("canvas").length).toEqual(true)
+    })
 
-    it("virtual dom contains animation screen",function(){
+    it("virtual dom contains animation section",function(){
       expect(pad.$dom.find("#jsAnimation").is("div")).toEqual(true)
+    })
+    it("animation contains animation screen",function(){
+      var animation = pad.$dom.find("#jsAnimation")
+      expect(!!animation.find("canvas").length).toEqual(true)
+    })
+    it("animation contains animation queue",function(){
+      var animation = pad.$dom.find("#jsAnimation")
+      expect(animation.find("#jsAnimationQueue").is("div")).toEqual(true)
     })
   })
 })
