@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   def to_atlas
-    output = {}
+    output = {user_id: self.user_id, imgur_id: self.imgur_id}
     self.slides.each{|slide| output[slide.title] = slide.to_atlas}
     return output
   end

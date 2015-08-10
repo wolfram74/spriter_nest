@@ -19,6 +19,7 @@
 //= require slides
 //= require projects
 //= require clientController
+//= require pad
 //= require view
 //= require imgurAPI
 //= require test_methods

@@ -19,8 +19,8 @@ function Project (args){
 };
 
 Project.prototype.newSlide = function(args){
-  var defaults = {width: this.defaultWidth, height: this.defaultHeight, project: this}
-  // args = utilities.merge(defaults, args)
+  var defaults = {width: this.defaultWidth, 
+    height: this.defaultHeight, project: this}
   args = utilities.extend({}, defaults, args)
   this.slides.push(new Slide(args))
   if (this.slides.length === 1){

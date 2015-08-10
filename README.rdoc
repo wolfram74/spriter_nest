@@ -84,5 +84,9 @@ login with oauth
 === loading project flow
 1. click image from index
 2. load project info from server
-2a. build 
+  2a. build project.js object
+    2a1. feed json into new Project method
+    2a2. parse project particular information
+    2a3. parse sprite atlas information, feed into New slide method
+  2b. build dom elements.
 3. store image properties in canvas
