@@ -47,6 +47,7 @@ var utilities = (function(){
   };
   
   API.extend = function(){
+    // creates object with highest precedence of value going right to left
     var args = [].slice.call(arguments, 0);
     var left = args.shift();
     args.forEach(function(right){

@@ -39,6 +39,30 @@ function testProjectGet(){
   return "derped"
 }
 
+function testPost(){
+  clientController.setProjectsAlbumID().then(function(response){
+    // clientController.grabYatta()
+    var data = clientController.projectState.projectCanvas.toDataURL("image/png")
+    return data.split(",")[1]
+  }).then(function(response){
+    clientController.uploadImage(response).then(function(response){
+      console.log(response)
+    })
+  })
+};
+
+function setCanvas(){
+  var img = new Image();
+  img.crossOrigin = "Anonymous";
+  img.src = $("img")[1].src;
+  var canvas = $('<canvas/>')[0];
+  canvas.width = img.width;
+  canvas.height = img.height;
+  canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+  canvas.getContext('2d').getImageData(50,100,1,1);
+  return canvas
+}
+
 /*
 
 var img = new Image();

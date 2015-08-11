@@ -134,16 +134,3 @@ var clientController = (function(){
 
   return API
 })()
-
-function testPost(){
-  clientController.setProjectsAlbumID().then(function(response){
-    clientController.grabYatta()
-    var data = clientController.projectState.projectCanvas.toDataURL("image/png")
-    return data.split(",")[1]
-  }).then(function(response){
-    clientController.uploadImage(response).then(function(response){
-      console.log(response)
-    })
-  })
-};
-
