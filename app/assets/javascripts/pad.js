@@ -8,6 +8,7 @@ function Pad(args){
   this.currentSlide = this.slides[0]
   this.$dom = $(HandlebarsTemplates['pads/show'](this));
   // this.setListeners();
+  this.redraw()
 };
 
 Pad.prototype.setListeners = function(){
@@ -19,5 +20,17 @@ Pad.prototype.setListeners = function(){
   $("#jsColorSelect").change(this.updateColor.bind(this));
 };
 
+Pad.prototype.redraw = function(){};
+Pad.prototype.scaleCanvas = function(){
+  var $canvas = this.$dom.find("#jsSlideShow").find("canvas")
+  var newH = this.zoom * (this.currentSlide.height +1 )
+  var newW = this.zoom * (this.currentSlide.width +1 )
+  $can.attr({height: newH, width: newW})
+  var borders = []  
+
+};
+// Pad.prototype.colorString = function(colorVec){};
 // Pad.prototype. = function(){};
+
+
 

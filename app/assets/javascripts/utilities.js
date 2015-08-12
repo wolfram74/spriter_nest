@@ -57,6 +57,13 @@ var utilities = (function(){
     });
     return left;
   };
+
+  API.colorString = function(colorVec){
+    var out = "rgba("
+    colorVec[3] /= 255
+    out += (colorVec.join(",")+")")
+    return out
+  };
   return API
 })()
 
