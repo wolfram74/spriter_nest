@@ -33,13 +33,8 @@ describe('slides behavior tests', function(){
     var color = [1,2,3,4];
     testProject.newSlide()
     testProject.setPenColor(color)
-
     expect(testProject.slides[0].project).toBe(testProject)
-
-    console.log(testProject.penColor, testProject.userID, "new pen color, expecting", color)
-    // debugger
     testProject.workingSlide.setColorAt({x:0, y:0})
-    console.log(testProject.workingSlide.pixels)
     expect(testProject.workingSlide.pixels[0][0]).toEqual(color);
   });
 })

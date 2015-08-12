@@ -26,7 +26,6 @@ Pad.prototype.scaleCanvas = function(){
   var slide = this.currentSlide
   var newH = this.zoom * (slide.height +1 )
   var newW = this.zoom * (slide.width +1 )
-  console.log([newH, newW])
   $canvas.attr({height: newH, width: newW})
   var borders = [utilities.colorString([0,0,0,250]),utilities.colorString([0,0,0,50])]
   var ctx = $canvas[0].getContext("2d")
@@ -40,7 +39,11 @@ Pad.prototype.scaleCanvas = function(){
   };
   return $canvas
 };
-// Pad.prototype.colorString = function(colorVec){};
+Pad.prototype.setCell = function(x, y){
+  this.currentSlide.setColorAt({
+    "x":x, "y":y, 
+    "penColor":this.color})
+};
 // Pad.prototype. = function(){};
 
 

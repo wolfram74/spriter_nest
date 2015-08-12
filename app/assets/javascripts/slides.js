@@ -18,15 +18,12 @@ function Slide (args){
 };
 
 Slide.prototype.setColorAt = function(args){
-  console.log("running setColorAt")
-  console.log(this.project.penColor, this.project.userID,"pen and user id" )
-  var newVal = utilities.clone(this.project.penColor)
+  var color = args.penColor || this.project.penColor
+  var newVal = utilities.clone(color)
   this.pixels[args["y"]][args["x"]] = newVal
   // for(i in this.project.penColor){
   //   this.pixels[args["y"]][args["x"]][i] = this.project.penColor[i]
   // }
-  console.log(args["y"], args["x"])
-  console.log(this.pixels[args["y"]][args["x"]], "pixel")
 };
 
 Slide.prototype.blankPixels = function(){

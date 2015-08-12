@@ -85,6 +85,16 @@ describe("pad properties", function(){
 })
 
 describe("pad behaviors", function(){
+  describe("general features",function(){
+    it("can change slide's color values",function(){
+      var test = new Pad()
+      test.color = [10,20,30,40]
+      var initColor = test.currentSlide.pixels[0][0]
+      test.setCell(0,0)
+      expect(test.currentSlide.pixels[0][0]).toEqual([10,20,30,40])
+      expect(test.currentSlide.pixels[1][0]).toEqual(initColor)
+    });
+  });
   describe("canvas component",function(){
     it("changes size based on zoom.",function(){
       var test = new Pad()
@@ -95,6 +105,12 @@ describe("pad behaviors", function(){
       var height2 = test.scaleCanvas().attr("height")
       expect(height0).not.toEqual(height1)
       expect(parseInt(height1)).toBeGreaterThan(parseInt(height2))
-    })
+    });
+    it("reflects changes made to slide",function(){
+      var test = new Pad()
+      var $can = test.$dom.find("#jsSlideShow").find("canvas")
+      var ctx = $can.getContext("2d")
+      var initcolor = ctx.getImageData(0,0,1,1)      
+    });
   })
 })
