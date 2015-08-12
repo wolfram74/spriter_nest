@@ -63,6 +63,9 @@ describe("pad properties", function(){
       expect(animation.find("#jsAnimationQueue").is("div")).toEqual(true)
     })
   })
+  describe("pads instance variables", function(){
+    
+  })
 })
 
 describe("pad behaviors", function(){})
