@@ -5,11 +5,11 @@ describe("pads meta tests", function(){
 })
 
 describe("pad properties", function(){
+  var pad;
+  beforeEach(function(){
+    pad = new Pad()
+  })
   describe("pads virtual dom", function(){
-    var pad;
-    beforeEach(function(){
-      pad = new Pad()
-    })
     it("has a virtual dom",function(){
       expect(pad.$dom.is("div")).toEqual(true)
     })
@@ -72,7 +72,15 @@ describe("pad properties", function(){
     })
   })
   describe("pads instance variables", function(){
-
+    it("knows it's collection of slides",function(){
+      expect(pad.hasOwnProperty("slides")).toBe(true)
+    })
+    it("knows it's pen color",function(){
+      expect(pad.hasOwnProperty("color")).toBe(true)      
+    })
+    it("knows it's zoom size",function(){
+      expect(pad.hasOwnProperty("zoom")).toBe(true)
+    })
   })
 })
 
