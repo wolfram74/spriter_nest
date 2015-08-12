@@ -50,16 +50,37 @@ Pad.prototype.prepColorSelect = function(){
   }
   $form.append($ul)
   $color.append($form)
+  $preview = $("<div id = 'jsCurrentColor'></div>")
+  $color.append($preview)
   this.$dom.append($color)
 }
 
-Pad.prototype.prepSlideView = function(){
+Pad.prototype.prepSlideSelect = function(){
+  var $gallery = $("<div></div>")
+  $gallery.attr("id","jsSlideSelect")
+  $form = $("<form action=''></form>")
+  $gallery.append($form)
+  this.$dom.append($gallery)
 
+}
+
+Pad.prototype.prepSlideView = function(){
+  var $stage = $("<div></div>")
+  $stage.attr("id","jsSlideView")
+  $stage.append($("<canvas>"))
+  this.$dom.append($stage)
 };
 
-Pad.prototype.prepAnimation = function(){}
+Pad.prototype.prepAnimation = function(){
+  var $animation = $("<div></div>")
+  $animation.attr("id","jsAnimation")
+  $animation.append($("<canvas>"))
+  var $queue = $("<div></div>")
+  $queue.attr("id","jsAnimationQueue")
+  $animation.append($queue)
+  this.$dom.append($animation)
 
-Pad.prototype.prepSlideSelect = function(){}
+}
 
 // Pad.prototype. = function(){}
 
