@@ -1,3 +1,14 @@
 <div id ="jsColorSelect">
   color here
+  <form action=''>
+    <ul>
+      {{#each params.rgba}}
+        <li>
+          <span>{{this}}</span>
+          <input type = "text" name="{{@index}}" value="0">
+        </li>
+      {{/each}}
+    </ul>
+  </form>
+  <div id = "jsCurrentColor"></div>
 </div>

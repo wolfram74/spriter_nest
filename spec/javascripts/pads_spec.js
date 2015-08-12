@@ -21,6 +21,10 @@ describe("pad properties", function(){
       var zoom = pad.$dom.find("#jsZoomSelect")
       expect(!!zoom.find("form").length).toEqual(true)
     })
+    it("zoom selector form contains a list items",function(){
+      var zoom = pad.$dom.find("#jsZoomSelect")
+      expect(!!zoom.find("form").find("li").length).toEqual(true)
+    })
 
     it("virtual dom contains color selector",function(){
       expect(pad.$dom.find("#jsColorSelect").is("div")).toEqual(true)
@@ -28,6 +32,10 @@ describe("pad properties", function(){
     it("color selector contains a form",function(){
       var color = pad.$dom.find("#jsColorSelect")
       expect(!!color.find("form").length).toEqual(true)
+    })
+    it("color selector form contains a list items",function(){
+      var color = pad.$dom.find("#jsColorSelect")
+      expect(!!color.find("form").find("li").length).toEqual(true)
     })
     it("color selector shows present color",function(){
       var color = pad.$dom.find("#jsColorSelect")

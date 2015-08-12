@@ -1,5 +1,12 @@
 <div id="jsZoomSelect">
   zoom here
   <form action=''>
+    <ul>
+      {{#each params.scales}}
+        <li>
+          {{this}}
+        </li>
+      {{/each}}
+    </ul>
   </form>
 </div>
