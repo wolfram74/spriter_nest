@@ -23,11 +23,22 @@ Pad.prototype.setListeners = function(){
 Pad.prototype.redraw = function(){};
 Pad.prototype.scaleCanvas = function(){
   var $canvas = this.$dom.find("#jsSlideShow").find("canvas")
-  var newH = this.zoom * (this.currentSlide.height +1 )
-  var newW = this.zoom * (this.currentSlide.width +1 )
-  $can.attr({height: newH, width: newW})
-  var borders = []  
-
+  var slide = this.currentSlide
+  var newH = this.zoom * (slide.height +1 )
+  var newW = this.zoom * (slide.width +1 )
+  console.log([newH, newW])
+  $canvas.attr({height: newH, width: newW})
+  var borders = [utilities.colorString([0,0,0,250]),utilities.colorString([0,0,0,50])]
+  var ctx = $canvas[0].getContext("2d")
+  for(var i=0; i< slide.height; i++ ){
+    ctx.fillStyle = borders[i%2]
+    ctx.fillRect(slide.width*this.zoom, i*this.zoom, this.zoom, this.zoom)
+  };
+  for(var j=0; j< slide.width; j++){
+    ctx.fillStyle = borders[j%2]
+    ctx.fillRect(j*this.zoom, slide.height*this.zoom, this.zoom, this.zoom)
+  };
+  return $canvas
 };
 // Pad.prototype.colorString = function(colorVec){};
 // Pad.prototype. = function(){};

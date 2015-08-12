@@ -88,15 +88,13 @@ describe("pad behaviors", function(){
   describe("canvas component",function(){
     it("changes size based on zoom.",function(){
       var test = new Pad()
-      var height0 = test.$dom.find("#jsSlideShow").find("canvas").height()
+      var height0 = test.$dom.find("#jsSlideShow").find("canvas").attr("height")
       test.zoom = 13
-      test.scaleCanvas()
-      var height1 = test.$dom.find("#jsSlideShow").find("canvas").height()
+      var height1 = test.scaleCanvas().attr("height")
       test.zoom = 2
-      test.scaleCanvas()
-      var height2 = test.$dom.find("#jsSlideShow").find("canvas").height()
+      var height2 = test.scaleCanvas().attr("height")
       expect(height0).not.toEqual(height1)
-      expect(height1).toBeGreaterThan(height2)
+      expect(parseInt(height1)).toBeGreaterThan(parseInt(height2))
     })
   })
 })
