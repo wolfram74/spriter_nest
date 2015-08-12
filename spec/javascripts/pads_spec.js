@@ -36,18 +36,18 @@ describe("pad properties", function(){
     })
 
     it("virtual dom contains slide selector",function(){
-      expect(pad.$dom.find("#jsSlideSelect").is("div")).toEqual(true)
+      expect(pad.$dom.find("#jsSlideIndex").is("div")).toEqual(true)
     })
     it("slide selector contains a form",function(){
-      var selector = pad.$dom.find("#jsSlideSelect")
+      var selector = pad.$dom.find("#jsSlideIndex")
       expect(!!selector.find("form").length).toEqual(true)
     })
 
     it("virtual dom contains slide main stage",function(){
-      expect(pad.$dom.find("#jsSlideView").is("div")).toEqual(true)
+      expect(pad.$dom.find("#jsSlideShow").is("div")).toEqual(true)
     })
     it("slide main stage contains a canvas",function(){
-      var stage = pad.$dom.find("#jsSlideView")
+      var stage = pad.$dom.find("#jsSlideShow")
       expect(!!stage.find("canvas").length).toEqual(true)
     })
 
@@ -64,7 +64,7 @@ describe("pad properties", function(){
     })
   })
   describe("pads instance variables", function(){
-    
+
   })
 })
 

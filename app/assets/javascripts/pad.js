@@ -1,8 +1,9 @@
 function Pad(args){
   var defaults = {}
   args = utilities.extend({}, defaults, args)
-  this.$dom = $("<div></div>")
-  this.prepDom()
+  this.params = {scales:[2,3,5,8,13], rgba: ["R","G","B","A"]}
+  this.$dom = $(HandlebarsTemplates['pads/show'](this))
+  // this.prepDom()
 };
 
 Pad.prototype.prepDom = function(){
