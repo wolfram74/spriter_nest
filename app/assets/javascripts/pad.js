@@ -62,9 +62,27 @@ Pad.prototype.stopDraw = function(){
   this.paint = false
 };
 
-Pad.prototype.startDraw = function(){};
+Pad.prototype.startDraw = function(e){
+  var mouseX = e.pageX - e.target.offsetLeft;
+  var mouseY = e.pageY - e.target.offsetTop;    
+  this.paint = true;
+  var x = parseInt(mouseX / this.zoom)
+  var y = parseInt(mouseY / this.zoom)
+  this.setCell(x,y);
+  this.redraw();
+};
 
-Pad.prototype.dragPen = function(){};
+Pad.prototype.dragPen = function(e){
+  if(this.paint){
+    var mouseX = e.pageX - e.target.offsetLeft;
+    var mouseY = e.pageY - e.target.offsetTop; 
+    var x = parseInt(mouseX / this.zoom)
+    var y = parseInt(mouseY / this.zoom)
+    this.setCell(x,y);
+    this.redraw();
+  }
+
+};
 
 Pad.prototype.updateZoom = function(e){
   var change = $(e.target).serialize().split("=")

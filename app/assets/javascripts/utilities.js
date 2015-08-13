@@ -59,9 +59,10 @@ var utilities = (function(){
   };
 
   API.colorString = function(colorVec){
+    var working = this.clone(colorVec)
     var out = "rgba("
-    colorVec[3] /= 255
-    out += (colorVec.join(",")+")")
+    working[3] /= 255
+    out += (working.join(",")+")")
     return out
   };
   return API
