@@ -54,3 +54,29 @@ Project.prototype.queueSlideMove = function(args){
   this.animationQueue[subject] = this.animationQueue[target]
   this.animationQueue[target] = temp
 };
+
+Project.find = function(id){
+  var url = "/users/"+clientController.authState.userID + "/projects/"+id
+  console.log(url)
+  var request = $.ajax({
+    type: "GET",
+    url:url
+  });
+  return new Promise(function (resolve, reject){
+    request.done(function(response){console.log(response);resolve(response)})
+    request.fail(function(response){console.log("project load failure");reject(response)})
+  })  
+};
+
+Project.cleanAROutput = function(projectData){
+  var json = {
+    defaultWidth: projectData.default_width
+    , defaultHeight: projectData.default_height
+    , colorDepth: projectData.color_depth
+    , userID: projectData.user_id
+    , penColor:[0,0,0,0]
+    , ID: projectData.id
+    , imgurID: projectData.imgur_id
+    , spriteAtlas: projectData.sprite_atlas
+  }
+};

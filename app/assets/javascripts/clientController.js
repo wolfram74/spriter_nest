@@ -4,17 +4,17 @@ $(document).ready(function(){
     clientController.hashParser(window.location.hash)
     .then(function(){
       return clientController.createUser()
-    }).then( function(results){
-      console.log(results)
-      clientController.authState["userID"] = results.id
-      return clientController.getProjects(results)
     })
-    .then(function(results){
-      view.indexProjects(results)
-      return results
-    }).then(function(results){
+    .then( function(user){
+      console.log(user)
+      clientController.authState["userID"] = user.id
+      return clientController.getProjects(user)
+    })
+    .then(function(projects){
+      view.indexProjects(projects)
       $("#stage").on("click", "img", clientController.showProjects)
-      return results
+      console.log(["these are results", projects])
+      return projects
     })
   }else{ console.log("no hash present")}
 });
@@ -67,21 +67,14 @@ var clientController = (function(){
     })  
   };
 
-  API.showProjects = function(){
+  API.showProjects = function(event){
     console.log(event)
     console.log(event.target)
     var id = $(event.target).attr("db_id")
-    var home = window.location.origin
-    var url = home+"/users/"+API.authState.userID + "/projects/"+id
-    console.log(url)
-    var request = $.ajax({
-      type: "GET",
-      url:url
-    });
-    return new Promise(function (resolve, reject){
-      request.done(function(response){console.log(response);resolve(response)})
-      request.fail(function(response){console.log("project load failure");reject(response)})
-    })  
+    Project.find(id)
+    .then(function(project){
+      console.log(project)
+    })
   };
 
   API.grabYatta = function(){

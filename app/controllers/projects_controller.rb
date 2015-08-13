@@ -9,9 +9,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    project = Project.find(params[:id])
-    output = {project: project, sprite_atlas: project.to_atlas}
-    render json: output
+    p "hit route"
+    project = Project.includes(:slides).find(params[:id])
+
+    # output = {project: project, sprite_atlas: project.to_atlas}
+    p project.to_json(methods: [:atlas])
+    render json: project.to_json(methods: [:atlas])
   end
 
   def destroy
