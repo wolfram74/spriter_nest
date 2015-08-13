@@ -25,7 +25,7 @@ RSpec.describe Project, type: :model do
          top: 1, left: 3*i, 
          width: 3, height: 4 )
       end
-      expect(project.to_atlas["1"].keys.length).to eq(4)
+      expect(project.to_atlas["1"].keys.length).to eq(5)
     end
   end
 end

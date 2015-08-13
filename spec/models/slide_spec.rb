@@ -7,7 +7,7 @@ RSpec.describe Slide, type: :model do
   describe "#to_atlas" do
     it "renders a hash containing positioning data" do
       slide = FactoryGirl.build(:slide, top: 1, left: 2, width: 3, height: 4)
-      expect(slide.to_atlas.keys.length).to eq(4)
+      expect(slide.to_atlas.keys.length).to eq(5)
     end
   end
 end
