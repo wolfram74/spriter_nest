@@ -120,4 +120,14 @@ describe('projects behavior tests', function(){
     expect(testProject.animationQueue[1].pixels[0][2]).toEqual([3,2,3,4]);
     expect(testProject.animationQueue[0].pixels[0][1]).toEqual([2,2,3,4]);
   });
+  it("can read a spriteAtlas and generate slides appropriately",function(){
+    var atlas = {
+      slide00:{height:21, width:17, top:9, left:12},
+      slide01:{height:21, width:17, top:9, left:29},
+      slide02:{height:21, width:17, top:9, left:46},
+      slide03:{height:21, width:17, top:9, left:63}
+    };
+    var project = new Project({spriteAtlas: atlas})
+    expect(project.slides.length).toEqual(4)
+  })
 })

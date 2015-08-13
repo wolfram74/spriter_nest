@@ -31,7 +31,14 @@ Project.prototype.newSlide = function(args){
   };
 };
 
-Project.prototype.makeSlides = function(){}
+Project.prototype.makeSlides = function(atlas){
+  for(name in atlas){
+    var args = atlas[name]
+    args.ID = name
+    args.projectID = this.ID
+    this.slides.push(new Slide(args))
+  };
+}
 
 
 Project.prototype.setPenColor = function(rgbaArray){
