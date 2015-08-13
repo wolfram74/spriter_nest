@@ -111,12 +111,13 @@ describe("pad behaviors", function(){
       var $can = test.$dom.find("#jsSlideShow").find("canvas");
       var ctx = $can[0].getContext("2d");
       var initColor = ctx.getImageData(0,0,1,1);
-      test.color = [10,20,30,40]
+      test.color = [10,20,30,116]
       test.setCell(0,0)
       test.redraw()
-      var newColor = ctx.getImageData(1,1,1,1)
+      var newColor = ctx.getImageData(0,0,1,1)
       var secondColor = ctx.getImageData(test.zoom*2,0,1,1)
       expect(initColor).toEqual(secondColor)
+      console.log(newColor.data, test.color)
       expect(newColor).not.toEqual(secondColor)
     });
   })

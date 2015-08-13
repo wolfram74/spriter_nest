@@ -6,6 +6,7 @@ function Pad(args){
   this.zoom = 8
   this.color = [0,0,0,0]
   this.currentSlide = this.slides[0]
+  this.paint = false
   this.$dom = $(HandlebarsTemplates['pads/show'](this));
   // this.setListeners();
   // this.redraw()
@@ -16,7 +17,7 @@ Pad.prototype.setListeners = function(){
   $('#jsSlideShow').mousemove(this.dragPen.bind(this));
   $('#jsSlideShow').mouseup(this.stopDraw.bind(this));
   $('#jsSlideShow').mouseleave(this.stopDraw.bind(this));
-  $("#jsZoomSelect").change(this.updateSize.bind(this));
+  $("#jsZoomSelect").change(this.updateZoom.bind(this));
   $("#jsColorSelect").change(this.updateColor.bind(this));
 };
 
@@ -51,11 +52,20 @@ Pad.prototype.scaleCanvas = function(){
   };
   return $canvas
 };
+
 Pad.prototype.setCell = function(x, y){
   this.currentSlide.setColorAt({
     "x":x, "y":y, 
     "penColor":this.color})
 };
+Pad.prototype.stopDraw = function(){
+  this.paint = false
+};
+
+Pad.prototype.startDraw = function(){};
+Pad.prototype.dragPen = function(){};
+Pad.prototype.updateZoom = function(){};
+Pad.prototype.updateColor = function(){};
 // Pad.prototype. = function(){};
 
 
