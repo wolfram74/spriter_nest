@@ -74,6 +74,8 @@ var clientController = (function(){
     Project.find(id)
     .then(function(project){
       console.log(project)
+      console.log(Project.cleanAROutput(project))
+      
     })
   };
 

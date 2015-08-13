@@ -3,6 +3,6 @@ class Slide < ActiveRecord::Base
 
   def to_atlas
     {top: self.top, left: self.left, 
-      width: self.width, height: self.height}
+      width: self.width, height: self.height, id:self.id}
   end
 end

@@ -16,6 +16,9 @@ function Project (args){
   this.slides = []
   this.animationQueue = []
   this.workingSlide = null
+  if(!!args.spriteAtlas){
+    this.makeSlides(args.spriteAtlas)
+  };
 };
 
 Project.prototype.newSlide = function(args){
@@ -27,6 +30,9 @@ Project.prototype.newSlide = function(args){
     this.workingSlide = this.slides[0]
   };
 };
+
+Project.prototype.makeSlides = function(){}
+
 
 Project.prototype.setPenColor = function(rgbaArray){
   for(var i in this.penColor){
@@ -78,5 +84,6 @@ Project.cleanAROutput = function(projectData){
     , ID: projectData.id
     , imgurID: projectData.imgur_id
     , spriteAtlas: projectData.sprite_atlas
-  }
+  };
+  return json
 };
