@@ -70,7 +70,18 @@ var clientController = (function(){
   API.showProjects = function(){
     console.log(event)
     console.log(event.target)
-    
+    var id = $(event.target).attr("db_id")
+    var home = window.location.origin
+    var url = home+"/users/"+API.authState.userID + "/projects/"+id
+    console.log(url)
+    var request = $.ajax({
+      type: "GET",
+      url:url
+    });
+    return new Promise(function (resolve, reject){
+      request.done(function(response){console.log(response);resolve(response)})
+      request.fail(function(response){console.log("project load failure");reject(response)})
+    })  
   };
 
   API.grabYatta = function(){
