@@ -63,6 +63,12 @@ function setCanvas(){
   return canvas
 }
 
+function makePad(){
+  var test = new Pad()
+  $("body").append(test.$dom)
+  test.redraw()
+  test.setListeners()
+}
 /*
 
 var img = new Image();

@@ -63,9 +63,20 @@ Pad.prototype.stopDraw = function(){
 };
 
 Pad.prototype.startDraw = function(){};
+
 Pad.prototype.dragPen = function(){};
-Pad.prototype.updateZoom = function(){};
-Pad.prototype.updateColor = function(){};
+
+Pad.prototype.updateZoom = function(e){
+  var change = $(e.target).serialize().split("=")
+  this.zoom = parseInt(change[1])
+  this.redraw()
+};
+Pad.prototype.updateColor = function(e){
+  var change = $(e.target).serialize().split("=")
+  var index = parseInt(change[0])
+  var value = parseInt(change[1])
+  this.color[index] = value
+};
 // Pad.prototype. = function(){};
 
 
