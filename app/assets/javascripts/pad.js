@@ -5,8 +5,9 @@ function Pad(args){
   this.slides = args.slides
   this.zoom = 8
   this.color = [0,0,0,0]
-  this.currentSlide = this.slides[0]
+  this.currentSlide = args.slides[0]
   this.paint = false
+  debugger
   this.$dom = $(HandlebarsTemplates['pads/show'](this));
   // this.setListeners();
   // this.redraw()

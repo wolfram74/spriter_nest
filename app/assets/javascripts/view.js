@@ -14,8 +14,11 @@ var view = (function(){
     })
   };
 
-  API.showProject = function(data){
-
+  API.showProject = function(pad){
+    $("#stage").children().hide()
+    $("#stage").append(pad.$dom)
+    pad.redraw()
+    pad.setListeners()
   };
 
   return API

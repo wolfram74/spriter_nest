@@ -74,9 +74,20 @@ var clientController = (function(){
     Project.find(id)
     .then(function(project){
       console.log(project)
-      console.log(Project.cleanAROutput(project))
-      
-    })
+      API.projectState.currentProject = new Project(Project.cleanAROutput(project))
+      console.log("project made", API.projectState.currentProject)
+      return API.projectState.currentProject
+    }).then(function(project){
+      console.log("next step?")
+      return project.loadSlides().then(function(project){
+        console.log("makin' pads")
+        console.log(project.slides)
+        console.log(API.projectState.currentProject.slides)
+        return API.projectState.pad = new Pad({slides: project.slides})  
+      });
+    }).then(function(pad){
+      view.showProject(pad)
+    });
   };
 
   API.grabYatta = function(){

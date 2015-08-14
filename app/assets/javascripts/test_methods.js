@@ -73,7 +73,7 @@ function makePad(){
 
 var img = new Image();
 img.crossOrigin = "Anonymous";
-img.src = $("img")[1].src;
+img.src = $("img")[0].src;
 var canvas = $('<canvas/>')[0];
 canvas.width = img.width;
 canvas.height = img.height;

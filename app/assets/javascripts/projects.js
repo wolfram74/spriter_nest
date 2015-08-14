@@ -16,9 +16,8 @@ function Project (args){
   this.slides = []
   this.animationQueue = []
   this.workingSlide = null
-  if(!!args.spriteAtlas){
-    this.makeSlides(args.spriteAtlas)
-  };
+  this.sourceCanvas;
+  // this.makeSlides();
 };
 
 Project.prototype.newSlide = function(args){
@@ -31,15 +30,90 @@ Project.prototype.newSlide = function(args){
   };
 };
 
-Project.prototype.makeSlides = function(atlas){
-  for(name in atlas){
-    var args = atlas[name]
-    args.ID = name
-    args.projectID = this.ID
-    this.slides.push(new Slide(args))
+Project.prototype.loadSlides = function(){
+  var project = this;
+  console.log("loadin' slides!", project.imageSrc())
+  if (project.imageSrc() === null){
+    return Promise.reject('no image found');
   };
+  return new Promise(function(resolve, reject){
+    project.makeSlides(function(){
+      resolve(project);
+    })
+  });
+};
+
+
+Project.prototype.imageSrc = function(atlas){
+  var images = $("*[db_id=" + this.ID + "]");
+  return images.length ? images.attr('src') : null;
+};
+
+Project.prototype.makeSlides = function(callback){
+  if (!this.spriteAtlas) return false;
+  var atlas = this.spriteAtlas;
+  var imageSrc = this.imageSrc();
+  var project = this;
+  this.readImage(imageSrc, function(canvas){
+    for(var name in atlas){
+      var args = atlas[name]
+      args.ID = name
+      args.projectID = project.ID
+      var pixels = canvas
+        .getContext("2d").getImageData(
+        args.left, args.top,
+        args.width, args.height);
+      var cells = []
+      var row = -1
+      var total = args.width*args.height
+      for(var i =0; i < total ;i++ ){
+        if(i%args.width === 0){
+          row+=1
+          cells.push([])
+        }
+        var pixel = pixels.data.subarray(i*4, (i+1)*4)
+        cells[row].push(pixel)
+      };
+      args.pixels = cells
+      project.slides.push(new Slide(args))
+    };
+  })
+
+  // var found = false
+  // if(.length){
+  //   console.log("found image!");
+  //   found = true;
+  //   this.readImage(function(){
+
+  //   });
+  // };
+  // for(name in atlas){
+  //   var args = atlas[name]
+  //   args.ID = name
+  //   args.projectID = this.ID
+  //   if(found){
+  //     var pixels = this.sourceCanvas
+  //       .getContext("2d").getImageData(
+  //       args.left, args.top,
+  //       args.width, args.height)
+  //     console.log(pixels)
+  //   };
+  //   this.slides.push(new Slide(args))
+  // };
 }
 
+Project.prototype.readImage = function(imageSrc, callback){
+  var img = new Image();
+  img.crossOrigin = "Anonymous";
+  img.onload = function(){
+    var canvas = $('<canvas/>')[0];
+    canvas.width = img.width;
+    canvas.height = img.height;
+    canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+    callback(canvas);
+  }.bind(this);
+  img.src = imageSrc;
+};
 
 Project.prototype.setPenColor = function(rgbaArray){
   for(var i in this.penColor){

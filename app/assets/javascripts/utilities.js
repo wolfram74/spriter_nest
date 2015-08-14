@@ -62,7 +62,10 @@ var utilities = (function(){
     var working = this.clone(colorVec)
     var out = "rgba("
     working[3] /= 255
-    out += (working.join(",")+")")
+    out += (working[0]+",")
+    out += (working[1]+",")
+    out += (working[2]+",")
+    out += (working[3]+")")
     return out
   };
   return API
