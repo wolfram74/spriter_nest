@@ -90,3 +90,5 @@ login with oauth
     2a3. parse sprite atlas information, feed into New slide method
   2b. build dom elements.
 3. store image properties in canvas
+
+===

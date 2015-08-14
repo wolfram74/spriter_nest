@@ -17,7 +17,6 @@ function Project (args){
   this.animationQueue = []
   this.workingSlide = null
   this.sourceCanvas;
-  // this.makeSlides();
 };
 
 Project.prototype.newSlide = function(args){
@@ -32,7 +31,6 @@ Project.prototype.newSlide = function(args){
 
 Project.prototype.loadSlides = function(){
   var project = this;
-  console.log("loadin' slides!", project.imageSrc())
   if (project.imageSrc() === null){
     return Promise.reject('no image found');
   };
@@ -77,6 +75,7 @@ Project.prototype.makeSlides = function(callback){
       args.pixels = cells
       project.slides.push(new Slide(args))
     };
+    callback()
   })
 
   // var found = false

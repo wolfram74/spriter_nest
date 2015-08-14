@@ -7,7 +7,6 @@ function Pad(args){
   this.color = [0,0,0,0]
   this.currentSlide = args.slides[0]
   this.paint = false
-  debugger
   this.$dom = $(HandlebarsTemplates['pads/show'](this));
   // this.setListeners();
   // this.redraw()
@@ -20,6 +19,7 @@ Pad.prototype.setListeners = function(){
   $('#jsSlideShow').mouseleave(this.stopDraw.bind(this));
   $("#jsZoomSelect").change(this.updateZoom.bind(this));
   $("#jsColorSelect").change(this.updateColor.bind(this));
+  $("#jsSlideIndex").change(this.slideShow.bind(this));
 };
 
 Pad.prototype.redraw = function(){
@@ -97,6 +97,18 @@ Pad.prototype.updateColor = function(e){
   var value = parseInt(change[1])
   this.color[index] = value
 };
+Pad.prototype.slideShow = function(e){
+  // debugger
+  // triggers on type = radio and type = checkbox
+  //  checkbox adds to animation queue, 
+  var change =$(e.target).serialize().split("=") 
+  var index = parseInt(change[1])
+  if(e.target.type === "radio") {
+    this.currentSlide = this.slides[index];
+    this.redraw();
+  }
+}
+
 // Pad.prototype. = function(){};
 
 

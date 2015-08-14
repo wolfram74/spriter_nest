@@ -64,10 +64,12 @@ function setCanvas(){
 }
 
 function makePad(){
-  var test = new Pad()
-  $("body").append(test.$dom)
-  test.redraw()
-  test.setListeners()
+  var proj = clientController.projectState.currentProject
+  var test = new Pad({slides: proj.slides})
+  view.showProject(test)
+  // $("body").append(test.$dom)
+  // test.redraw()
+  // test.setListeners()
 }
 /*
 

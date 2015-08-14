@@ -68,23 +68,20 @@ var clientController = (function(){
   };
 
   API.showProjects = function(event){
-    console.log(event)
-    console.log(event.target)
     var id = $(event.target).attr("db_id")
     Project.find(id)
     .then(function(project){
-      console.log(project)
       API.projectState.currentProject = new Project(Project.cleanAROutput(project))
-      console.log("project made", API.projectState.currentProject)
+      // var project = API.projectState.currentProject
+      // var test = new Pad({slides: project.slides})
+      // view.showProject(test)
+
       return API.projectState.currentProject
     }).then(function(project){
-      console.log("next step?")
-      return project.loadSlides().then(function(project){
-        console.log("makin' pads")
-        console.log(project.slides)
-        console.log(API.projectState.currentProject.slides)
-        return API.projectState.pad = new Pad({slides: project.slides})  
-      });
+      // project.loadSlides()
+      return project.loadSlides()
+    }).then(function(project){
+      return API.projectState.pad = new Pad({slides: project.slides})  
     }).then(function(pad){
       view.showProject(pad)
     });
