@@ -1,10 +1,10 @@
 function Pad(args){
   var defaults = {"slides": [new Slide()] };
   args = utilities.extend({}, defaults, args);
-  this.params = {scales:[2,3,5,8,13,21], rgba: ["R","G","B","A"]};
+  this.params = {scales:[2,3,5,8,13,21], rgba: [["R",0],["G",0],["B",0],["A",255]]};
   this.slides = args.slides
   this.zoom = 8
-  this.color = [0,0,0,0]
+  this.color = [0,0,0,255]
   this.currentSlide = args.slides[0]
   this.paint = false
   this.$dom = $(HandlebarsTemplates['pads/show'](this));
@@ -13,10 +13,12 @@ function Pad(args){
 };
 
 Pad.prototype.setListeners = function(){
-  $('#jsSlideShow').mousedown(this.startDraw.bind(this));
-  $('#jsSlideShow').mousemove(this.dragPen.bind(this));
-  $('#jsSlideShow').mouseup(this.stopDraw.bind(this));
-  $('#jsSlideShow').mouseleave(this.stopDraw.bind(this));
+  $('#jsSlideShow').on("mousedown","canvas", this.startDraw.bind(this));
+  $('#jsSlideShow').mousemove("canvas", this.dragPen.bind(this));
+  $('#jsSlideShow').mouseup("canvas", this.stopDraw.bind(this));
+  $('#jsSlideShow').on("mouseleave", "canvas", this.stopDraw.bind(this));
+  $("#jsSlideCreate").on("click", this.slideCreate.bind(this))
+  $("#jsSlideCopy").on("click", this.slideCopy.bind(this))
   $("#jsZoomSelect").change(this.updateZoom.bind(this));
   $("#jsColorSelect").change(this.updateColor.bind(this));
   $("#jsSlideIndex").change(this.slideShow.bind(this));
@@ -109,6 +111,12 @@ Pad.prototype.slideShow = function(e){
   }
 }
 
+Pad.prototype.slideCopy = function(){
+  console.log("I'm make a copy of a slide")
+};
+Pad.prototype.slideCreate = function(){
+  console.log("I'm make a new slide from project defaults")
+};
 // Pad.prototype. = function(){};
 
 

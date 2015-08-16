@@ -4,8 +4,8 @@
     <ul>
       {{#each params.rgba}}
         <li>
-          <span>{{this}}</span>
-          <input type = "text" name="{{@index}}" value="0">
+          <span>{{this.[0]}}</span>
+          <input type = "text" name="{{@index}}" value={{this.[1]}}>
         </li>
       {{/each}}
     </ul>

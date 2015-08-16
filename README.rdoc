@@ -91,4 +91,22 @@ login with oauth
   2b. build dom elements.
 3. store image properties in canvas
 
-===
+=== remaining tasks
+*implement new slide button
+  -add button to canvas div
+  -link new slide pad method to button
+  -segue into append slide pad method
+  -update slideIndex div
+*implement copy slide button
+  -add button to canvas div
+  -link copy slide pad method to button
+  -segue into append slide pad method
+  -update slideIndex div
+*implement new project form
+  -add form to projects index
+  -create project with properties from form
+*implement animation queue
+  - populate queue from checkboxes in slideIndex
+  - iterate through queue 30 times a second refreshing small canvas with it
+*implement saving
+  - 
