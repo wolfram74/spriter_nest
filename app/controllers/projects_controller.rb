@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    p "hit route"
     project = Project.includes(:slides).find(params[:id])
 
     # output = {project: project, sprite_atlas: project.to_atlas}

@@ -52,11 +52,13 @@ Project.prototype.makeSlides = function(callback){
   var atlas = this.spriteAtlas;
   var imageSrc = this.imageSrc();
   var project = this;
+  // debugger
   this.readImage(imageSrc, function(canvas){
     for(var name in atlas){
       var args = atlas[name]
       args.ID = name
       args.projectID = project.ID
+      args.project = project
       var pixels = canvas
         .getContext("2d").getImageData(
         args.left, args.top,

@@ -14,7 +14,7 @@ function Slide (args){
   }else{
     this.pixels = args["pixels"]
   }
-  this.ID = args["ID"]
+    this.ID = args["ID"]
 };
 
 Slide.prototype.setColorAt = function(args){
@@ -39,6 +39,26 @@ Slide.prototype.blankPixels = function(){
   return emptyRows;
 };
 
+Slide.copy = function(slide){
+  var user = "/users/"+slide.project.userID;
+  var project = "/projects/" + slide.project.ID;
+  var url = (user+project+"/slides");
+  var request = $.ajax({
+    type:"POST",
+    url:url,
+    data:{width:slide.width, height: slide.height}
+  });
+  return new Promise(function(resolve, reject){
+    request.done(function(response){
+      console.log(response);
+      resolve(response)
+    });
+    request.fail(function(response){
+      console.log(response);
+      reject(response)
+    });
+  });
+}
+
 Slide.create = function(){
-  
 };
