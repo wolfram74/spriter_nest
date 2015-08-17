@@ -40,13 +40,25 @@ Slide.prototype.blankPixels = function(){
 };
 
 Slide.copy = function(slide){
-  var user = "/users/"+slide.project.userID;
-  var project = "/projects/" + slide.project.ID;
+  var args = {}
+  args.userID = slide.project.userID
+  args.projectID = slide.project.ID
+  args.width = slide.width
+  args.height = slide.height
+  Slide.create(args).then(function(slide){
+    console.log("vorked") 
+  })
+}
+
+Slide.create = function(args){
+  // args assums userID, projectID, width and height
+  var user = "/users/"+args.userID;
+  var project = "/projects/" + args.projectID;
   var url = (user+project+"/slides");
   var request = $.ajax({
     type:"POST",
     url:url,
-    data:{width:slide.width, height: slide.height}
+    data:{width:args.width, height: args.height}
   });
   return new Promise(function(resolve, reject){
     request.done(function(response){
@@ -58,7 +70,4 @@ Slide.copy = function(slide){
       reject(response)
     });
   });
-}
-
-Slide.create = function(){
 };
