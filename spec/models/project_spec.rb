@@ -28,4 +28,41 @@ RSpec.describe Project, type: :model do
       expect(project.to_atlas["1"].keys.length).to eq(5)
     end
   end
+
+  describe "#next_spot" do
+    before(:each) do
+      @project = FactoryGirl.build(:project,
+        default_width: 11,
+        default_height:13)
+    end
+    it "returns 0-0 for a slideless project" do
+
+      expect(@project.next_spot).to eq([0,0])
+    end
+    it "returns a different position for a project with slides" do
+      @project.slides << FactoryGirl.build(:slide,
+         title: 0.to_s,
+         top: 0, left: 0, 
+         width: 11, height: 13 )
+      expect(@project.next_spot).to eq([11,0])
+    end
+    it "position wraps around for a project with slides on the edge" do
+      @project.slides << FactoryGirl.build(:slide,
+         title: 0.to_s,
+         top: 0, left: 616, 
+         width: 11, height: 13 )
+      expect(@project.next_spot).to eq([0,13])
+    end
+    it "position wraps around to the next line if a project covers multiple lines" do
+      @project.slides << FactoryGirl.build(:slide,
+         title: 0.to_s,
+         top: 0, left: 616, 
+         width: 11, height: 13 )
+      @project.slides << FactoryGirl.build(:slide,
+         title: 1.to_s,
+         top: 13, left: 616, 
+         width: 11, height: 13 )
+      expect(@project.next_spot).to eq([0,26])
+    end
+  end
 end
