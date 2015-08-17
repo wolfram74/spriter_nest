@@ -3,11 +3,7 @@
   <form action=''>
     <ul>
       {{#each slides}}
-        <li>
-          {{@index}} 
-          <input type= "radio" name ="currentSlide" value = {{@index}}>
-          <input type = "checkbox" value = {{@index}}>
-        </li>
+        {{> pads/_slideLi number = @index }}
       {{/each}}
     </ul>    
   <form>

@@ -112,12 +112,12 @@ Pad.prototype.slideShow = function(e){
 }
 
 Pad.prototype.slideCopy = function(){
-  console.log("I'm make a copy of a slide")
+  
+
 };
 Pad.prototype.slideCreate = function(){
   console.log("I'm make a new slide from project defaults")
 };
 // Pad.prototype. = function(){};
-
 
 

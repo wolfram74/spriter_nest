@@ -38,3 +38,7 @@ Slide.prototype.blankPixels = function(){
   };
   return emptyRows;
 };
+
+Slide.create = function(){
+  
+};
