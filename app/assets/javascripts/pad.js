@@ -98,6 +98,8 @@ Pad.prototype.updateColor = function(e){
   var index = parseInt(change[0])
   var value = parseInt(change[1])
   this.color[index] = value
+  $("#jsCurrentColor").css(
+    {"background-color": utilities.colorString(this.color)})
 };
 Pad.prototype.slideShow = function(e){
   // debugger
