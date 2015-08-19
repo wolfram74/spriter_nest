@@ -22,6 +22,7 @@ Pad.prototype.setListeners = function(){
   $("#jsZoomSelect").change(this.updateZoom.bind(this));
   $("#jsColorSelect").change(this.updateColor.bind(this));
   $("#jsSlideIndex").change(this.slideShow.bind(this));
+  $("#jsProjectSave").on("click", this.projectSave.bind(this))
 };
 
 Pad.prototype.redraw = function(){
@@ -121,6 +122,11 @@ Pad.prototype.slideCreate = function(){
   console.log("I'm make a new slide from project defaults")
   Slide.blank(clientController.projectState.currentProject)
 };
+
+Pad.prototype.projectSave = function(e){
+  console.log("Ok, let's get this going.")
+};
+
 // Pad.prototype. = function(){};
 
 
