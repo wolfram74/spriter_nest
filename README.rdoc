@@ -92,12 +92,12 @@ login with oauth
 3. store image properties in canvas
 
 === remaining tasks
-*implement new slide button
+*implement new slide button √
   -add button to canvas div
   -link new slide pad method to button
   -segue into append slide pad method
   -update slideIndex div
-*implement copy slide button
+*implement copy slide button √
   -add button to canvas div
   -link copy slide pad method to button
     1. figure out new slides location

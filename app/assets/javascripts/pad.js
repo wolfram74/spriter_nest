@@ -117,6 +117,7 @@ Pad.prototype.slideCopy = function(){
 };
 Pad.prototype.slideCreate = function(){
   console.log("I'm make a new slide from project defaults")
+  Slide.blank(clientController.projectState.currentProject)
 };
 // Pad.prototype. = function(){};
 

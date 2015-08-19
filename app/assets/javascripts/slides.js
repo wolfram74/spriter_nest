@@ -2,11 +2,14 @@ function Slide (args){
   var defaults = {
     width:16 ,height:26, 
     projectID:null, project: new Project(), 
-    pixels: null, ID: null
+    pixels: null, ID: null,
+    top: 0, left: 0
   };
   args = utilities.merge(defaults, args)
   this.width = args["width"] 
   this.height = args["height"]
+  this.top = args["top"]
+  this.left = args["left"]
   this.project = args["project"]
   this.projectID = this.project.ID
   if (!args["pixels"]){
@@ -45,10 +48,46 @@ Slide.copy = function(slide){
   args.projectID = slide.project.ID
   args.width = slide.width
   args.height = slide.height
-  Slide.create(args).then(function(slide){
-    console.log("vorked") 
+  Slide.create(args).then(function(slideRecord){
+    console.log("good route");
+    console.log(slideRecord);
+    slideRecord.ID = slideRecord.id;
+    slideRecord.pixels = utilities.clone(slide.pixels);
+    slideRecord.project = slide.project;
+    return slideRecord
+  }).then(function(slideRecord){
+    newSlide = new Slide(slideRecord);
+    var index = newSlide.project.slides.length
+    newSlide.project.slides.push(newSlide);
+    var tempLi = $("#jsSlideIndex").find("li")[0]
+    var $newLi = $("<li></li>").append(tempLi.innerHTML.replace(/\d/g, index))
+    $("#jsSlideIndex").find("ul").append($newLi)
   })
 }
+
+Slide.blank = function(project){
+  var args = {}
+  args.userID = project.userID
+  args.projectID = project.ID
+  args.width = project.defaultWidth
+  args.height = project.defaultHeight
+  console.log(args)
+  Slide.create(args).then(function(slideRecord){
+    console.log("good route");
+    console.log(slideRecord);
+    slideRecord.ID = slideRecord.id;
+    slideRecord.project = project;
+    return slideRecord
+  }).then(function(slideRecord){
+    newSlide = new Slide(slideRecord);
+    var index = newSlide.project.slides.length
+    newSlide.project.slides.push(newSlide);
+    var tempLi = $("#jsSlideIndex").find("li")[0]
+    var $newLi = $("<li></li>").append(tempLi.innerHTML.replace(/\d/g, index))
+    $("#jsSlideIndex").find("ul").append($newLi)
+  })
+
+};
 
 Slide.create = function(args){
   // args assums userID, projectID, width and height
