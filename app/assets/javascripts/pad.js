@@ -125,6 +125,10 @@ Pad.prototype.slideCreate = function(){
 
 Pad.prototype.projectSave = function(e){
   console.log("Ok, let's get this going.")
+  this.currentSlide.project.renderCanvas().then(function(canvas){
+    console.log("canvas made");
+    $("body").append($(canvas))
+  })
 };
 
 // Pad.prototype. = function(){};

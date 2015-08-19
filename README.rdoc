@@ -113,8 +113,8 @@ login with oauth
   - iterate through queue 30 times a second refreshing small canvas with it
 *implement saving
   -assemble png from slides
-    1. make blank canvas with dimensions 630 X 630
-    2. set colors appropriately
+    1. make blank canvas with dimensions 630 X 630√
+    2. set colors appropriately√
   -post to imgur
     1. produce data for imgur upload
     2. get new ID

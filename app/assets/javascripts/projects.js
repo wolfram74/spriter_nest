@@ -143,6 +143,34 @@ Project.prototype.queueSlideMove = function(args){
   this.animationQueue[target] = temp
 };
 
+Project.prototype.renderCanvas = function(){
+  var $canvas = $("<canvas>")
+  $canvas.attr({"width":630,"height":630})
+  var context = $canvas[0].getContext("2d")
+  var image = context.createImageData($canvas[0].width, $canvas[0].height)
+  for(var slideInd = 0; slideInd < this.slides.length; slideInd++){
+    var slide = this.slides[slideInd]
+    var top = slide.top
+    var left = slide.left
+    for(var x = 0; x < slide.width; x++){
+      for(var y = 0; y < slide.height; y++){
+        var color = slide.pixels[y][x]
+        var i = (left+x)+(top+y)*$canvas[0].width
+        image.data[4*i+0]=color[0];
+        image.data[4*i+1]=color[1];
+        image.data[4*i+2]=color[2];
+        image.data[4*i+3]=color[3];
+      };
+    };
+  };
+  context.putImageData(image, 0,0)
+  clientController.projectState.canvas = $canvas[0]
+  return new Promise(function(resolve, reject){
+    resolve(clientController.projectState.canvas)
+    reject("fuck, it's broked.")
+  })
+};
+
 Project.find = function(id){
   var url = "/users/"+clientController.authState.userID + "/projects/"+id
   console.log(url)
