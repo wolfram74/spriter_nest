@@ -1,5 +1,8 @@
 <div class =  "projectsIndex">
-  farts
+  {{#if this}}
+  Click on your sprite sheet.
+  {{/if}}
+  {{> projects/_new}}
   <ul>
     {{#each this}}
       {{> projects/_listing}}

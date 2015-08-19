@@ -13,6 +13,7 @@ $(document).ready(function(){
     .then(function(projects){
       view.indexProjects(projects)
       $("#stage").on("click", "img", clientController.showProjects)
+      $("#stage").on("submit", clientController.createProject)
       console.log(["these are results", projects])
       return projects
     })
@@ -85,6 +86,11 @@ var clientController = (function(){
     }).then(function(pad){
       view.showProject(pad)
     });
+  };
+
+  API.createProject = function(event){
+    event.preventDefault()
+    console.log("grabbed, fyeah!")
   };
 
   API.grabYatta = function(){
