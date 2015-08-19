@@ -59,9 +59,8 @@ Slide.copy = function(slide){
     newSlide = new Slide(slideRecord);
     var index = newSlide.project.slides.length
     newSlide.project.slides.push(newSlide);
-    var tempLi = $("#jsSlideIndex").find("li")[0]
-    var $newLi = $("<li></li>").append(tempLi.innerHTML.replace(/\d/g, index))
-    $("#jsSlideIndex").find("ul").append($newLi)
+    var tempLi = $(Handlebars.partials["pads/_slideLi"])
+    $("#jsSlideIndex").find("ul").append(tempLi)
   })
 }
 
@@ -82,11 +81,9 @@ Slide.blank = function(project){
     newSlide = new Slide(slideRecord);
     var index = newSlide.project.slides.length
     newSlide.project.slides.push(newSlide);
-    var tempLi = $("#jsSlideIndex").find("li")[0]
-    var $newLi = $("<li></li>").append(tempLi.innerHTML.replace(/\d/g, index))
-    $("#jsSlideIndex").find("ul").append($newLi)
+    var tempLi = $(Handlebars.partials["pads/_slideLi"])
+    $("#jsSlideIndex").find("ul").append(tempLi)
   })
-
 };
 
 Slide.create = function(args){
