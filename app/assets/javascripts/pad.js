@@ -27,6 +27,7 @@ Pad.prototype.setListeners = function(){
 
 Pad.prototype.redraw = function(){
   this.scaleCanvas();
+  if(!this.currentSlide){return "no slide"}
   var context = this.$dom.find("#jsSlideShow").find("canvas")[0].getContext("2d");
   for(var i=0; i < this.currentSlide.height; i++ ){
     for(var j=0; j < this.currentSlide.width; j++){
@@ -39,6 +40,7 @@ Pad.prototype.redraw = function(){
 };
 
 Pad.prototype.scaleCanvas = function(){
+  if(!this.currentSlide){return "no slide"}
   var $canvas = this.$dom.find("#jsSlideShow").find("canvas")
   var slide = this.currentSlide
   var newH = this.zoom * (slide.height +1 )

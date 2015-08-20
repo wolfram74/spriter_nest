@@ -91,16 +91,20 @@ var clientController = (function(){
   API.createProject = function(event){
     event.preventDefault()
     console.log("grabbed, fyeah!")
-    var url = "users/" + API.authState.userID + "/projects"
-    var data = $(event.target).serialize()
-    var request = $.ajax({
-      url: url, 
-      type:"POST", 
-      data:data})
-    return new Promise(function (resolve, reject){
-      request.done(function(response){resolve(response)})
-      request.fail(function(response){console.log("project crate failure");reject(response)})
-    })  
+    var form = $(event.target).serialize()
+    Project.create({data:form}).then(function(projectAR){
+      var projectJSON = Project.cleanAROutput(projectAR)
+      API.projectState.currentProject = new Project(projectJSON)
+      return API.projectState.currentProject
+    }).then(function(project){
+      // project.loadSlides()
+    //   project.newSlide()
+    //   return project
+    // }).then(function(project){
+      return API.projectState.pad = new Pad({slides: project.slides})  
+    }).then(function(pad){
+      view.showProject(pad)
+    })
   };
 
   API.grabYatta = function(){

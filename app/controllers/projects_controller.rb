@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
       title: params[:title],
       })
     p project.to_json
-    render json: {totes: "magoats"}
+    render json: project
   end
 
   def index

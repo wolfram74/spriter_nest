@@ -185,6 +185,20 @@ Project.find = function(id){
   })  
 };
 
+Project.create = function(args){
+    
+  var url = "users/" + clientController.authState.userID + "/projects"
+  var data = args.data
+  var request = $.ajax({
+    url: url, 
+    type:"POST", 
+    data:data})
+  return new Promise(function (resolve, reject){
+    request.done(function(response){resolve(response)})
+    request.fail(function(response){console.log("project crate failure");reject(response)})
+  })  
+};
+
 Project.cleanAROutput = function(projectData){
   var json = {
     defaultWidth: projectData.default_width
