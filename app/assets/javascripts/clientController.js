@@ -139,12 +139,12 @@ var clientController = (function(){
     })
   }
 
-  API.uploadImage = function(img){
-    // console.log(img)
+  API.uploadImage = function(args){
+    // args should have img data, and project name
     var data = {
-      image: img, 
+      image: args.img, 
       album: API.authState.albumID,
-      name: "yatta",
+      name: args.name,
       token: API.authState.access_token,
       type: "binary file"
 

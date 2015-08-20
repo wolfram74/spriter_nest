@@ -127,7 +127,17 @@ Pad.prototype.projectSave = function(e){
   console.log("Ok, let's get this going.")
   this.currentSlide.project.renderCanvas().then(function(canvas){
     console.log("canvas made");
-    $("body").append($(canvas))
+    return clientController.setProjectsAlbumID()
+  }).then(function(response){
+    var data = clientController.projectState.canvas.toDataURL("image/png")
+    return data.split(",")[1]
+  }).then(function(urlHex){
+    var args = {}
+    args.img = urlHex
+    args.name = clientController.projectState.currentProject.title || "default title"
+    clientController.uploadImage(args).then(function(response){
+      console.log(response)
+    })
   })
 };
 

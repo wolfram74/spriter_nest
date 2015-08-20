@@ -116,8 +116,8 @@ login with oauth
     1. make blank canvas with dimensions 630 X 630√
     2. set colors appropriately√
   -post to imgur
-    1. produce data for imgur upload
-    2. get new ID
+    1. produce data for imgur upload√
+    2. get new ID √
     3. send ID to server
   -update server
     1. save new ID
