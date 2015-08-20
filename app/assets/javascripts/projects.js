@@ -201,5 +201,15 @@ Project.cleanAROutput = function(projectData){
 Project.updateImgurID = function(args){
   // args expects AR id, user id and new imgur image ID
   console.log(args)
-  // request = $.ajax
+  var url = "users/"+args.userID + "/projects/" + args.activeRecordID
+  request = $.ajax({
+    url: url,
+    type: "PATCH",
+    data: {newID: args.imgurID}
+  })
+
+  return new Promise(function(resolve, reject){
+    request.done(function(response){resolve(response)});
+    request.fail(function(response){reject(response)});
+  })
 };

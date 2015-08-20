@@ -16,6 +16,14 @@ class ProjectsController < ApplicationController
     render json: project.to_json(methods: [:sprite_atlas])
   end
 
+  def update
+    p params
+    project = Project.find(params[:id])
+    old_imgur_id = project.imgur_id
+    project.update_attributes({imgur_id: params[:newID]})
+    render json: {oldImgurID: old_imgur_id}
+  end
+
   def destroy
 
   end

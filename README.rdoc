@@ -118,8 +118,8 @@ login with oauth
   -post to imgur
     1. produce data for imgur upload√
     2. get new ID √
-    3. send ID to server
+    3. send ID to server√
   -update server
-    1. save new ID
-    2. respond with old ID
-    3. delete old image.
+    1. save new ID√
+    2. respond with old ID√
+    3. delete old image.√

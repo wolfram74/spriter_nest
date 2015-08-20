@@ -142,6 +142,15 @@ Pad.prototype.projectSave = function(e){
       args.activeRecordID = clientController.projectState.currentProject.ID
       args.imgurID = response.data.id
       return Project.updateImgurID(args)
+    }).then(function(response){
+      console.log("deleting now")
+      var args = {}
+      args.token = clientController.authState.access_token
+      args.id = response.oldImgurID
+      return imgurAPI.deleteImage(args)
+    }).then(function(response){
+      console.log(response);
+      console.log("Fuck yeah, saved.")
     })
   })
 };
