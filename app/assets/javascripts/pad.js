@@ -134,13 +134,27 @@ Pad.prototype.queueUpdate = function(){
 }
 
 Pad.prototype.animationCycle = function(){
-  console.log("next frame", this.frame, this)
   var frames = this.animationQueue.length
   if(frames){
-    console.log(this.frame % frames)
     this.frame+=1
+    this.animateSlide(this.slides[this.animationQueue[this.frame%frames]])
   }
-  setTimeout(function(){this.animationCycle()}.bind(this), 1000)
+  setTimeout(function(){this.animationCycle()}.bind(this), 33)
+};
+
+Pad.prototype.animateSlide = function(slide){
+  var $canvas = this.$dom.find("#jsAnimation").find("canvas")
+  $canvas.attr({height:slide.height,width:slide.width})
+  var context = $canvas[0].getContext("2d");
+  for(var i=0; i < slide.height; i++ ){
+    for(var j=0; j < slide.width; j++){
+      context.fillStyle = utilities.colorString(slide.pixels[i][j])
+      context.fillRect(
+        j, i, 
+        1, 1)
+    };
+  };
+
 };
 
 Pad.prototype.slideCopy = function(){
