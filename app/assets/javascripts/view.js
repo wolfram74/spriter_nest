@@ -19,6 +19,7 @@ var view = (function(){
     $("#stage").append(pad.$dom)
     pad.redraw()
     pad.setListeners()
+    pad.animationCycle()
   };
 
   return API

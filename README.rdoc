@@ -105,14 +105,14 @@ login with oauth
     3. make slide with id, position data, dimensions and copy of cells array
   -segue into append slide pad method
   -update slideIndex div
-*implement new project form
+*implement new project form√
   -add form to projects index
   -create project with properties from form
-  
+
 *implement animation queue
-  - populate queue from checkboxes in slideIndex
-  - iterate through queue 30 times a second refreshing small canvas with it
-*implement saving
+  - populate queue from checkboxes in slideIndex √
+  - step through queue 30 times a second refreshing small canvas with it
+*implement saving√
   -assemble png from slides
     1. make blank canvas with dimensions 630 X 630√
     2. set colors appropriately√

@@ -7,6 +7,8 @@ function Pad(args){
   this.color = [0,0,0,255]
   this.currentSlide = args.slides[0]
   this.paint = false
+  this.animationQueue = []
+  this.frame = 0
   this.$dom = $(HandlebarsTemplates['pads/show'](this));
   // this.setListeners();
   // this.redraw()
@@ -113,8 +115,32 @@ Pad.prototype.slideShow = function(e){
   if(e.target.type === "radio") {
     this.currentSlide = this.slides[index];
     this.redraw();
+  }else if(e.target.type === "checkbox"){
+    this.queueUpdate();
   }
 }
+
+Pad.prototype.queueUpdate = function(){
+  console.log("firing up queue")
+  this.animationQueue = []
+  var slides = $("#jsSlideIndex").find("li")
+  for(var index = 0; index < slides.length; index++){
+    if(slides.eq(index).find("input").is(":checked")){
+      this.animationQueue.push(index);
+    };
+  };
+  console.log(this.animationQueue)
+}
+
+Pad.prototype.animationCycle = function(){
+  console.log("next frame", this.frame)
+  var frames = this.animationQueue.length
+  if(frames){
+    console.log(this.frame % frames)
+    this.frame+=1
+  }
+  setTimeout(this.animationCycle().bind(this) , 1000)
+};
 
 Pad.prototype.slideCopy = function(){
   console.log("I'm making a copy")  
