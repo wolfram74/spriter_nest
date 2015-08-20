@@ -137,6 +137,11 @@ Pad.prototype.projectSave = function(e){
     args.name = clientController.projectState.currentProject.title || "default title"
     clientController.uploadImage(args).then(function(response){
       console.log(response)
+      var args = {}
+      args.userID = clientController.authState.userID
+      args.activeRecordID = clientController.projectState.currentProject.ID
+      args.imgurID = response.data.id
+      return Project.updateImgurID(args)
     })
   })
 };

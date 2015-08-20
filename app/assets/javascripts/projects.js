@@ -197,3 +197,9 @@ Project.cleanAROutput = function(projectData){
   };
   return json
 };
+
+Project.updateImgurID = function(args){
+  // args expects AR id, user id and new imgur image ID
+  console.log(args)
+  // request = $.ajax
+};
