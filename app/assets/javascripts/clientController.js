@@ -91,6 +91,16 @@ var clientController = (function(){
   API.createProject = function(event){
     event.preventDefault()
     console.log("grabbed, fyeah!")
+    var url = "users/" + API.authState.userID + "/projects"
+    var data = $(event.target).serialize()
+    var request = $.ajax({
+      url: url, 
+      type:"POST", 
+      data:data})
+    return new Promise(function (resolve, reject){
+      request.done(function(response){resolve(response)})
+      request.fail(function(response){console.log("project crate failure");reject(response)})
+    })  
   };
 
   API.grabYatta = function(){

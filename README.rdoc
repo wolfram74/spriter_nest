@@ -108,6 +108,7 @@ login with oauth
 *implement new project form
   -add form to projects index
   -create project with properties from form
+  
 *implement animation queue
   - populate queue from checkboxes in slideIndex
   - iterate through queue 30 times a second refreshing small canvas with it

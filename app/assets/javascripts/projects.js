@@ -2,13 +2,14 @@ function Project (args){
   var defaults = {
     defaultWidth:16 ,defaultHeight:26, 
     colorDepth:256, userID:null, penColor:[0,0,0,0],
-    ID: null, imgurID: null, spriteAtlas: null
+    ID: null, imgurID: null, spriteAtlas: null, title:null
   };
   args = utilities.merge(defaults, args)
   this.defaultWidth = args["defaultWidth"] 
   this.defaultHeight = args["defaultHeight"]
   this.colorDepth = args["colorDepth"]
   this.ID = args["ID"]
+  this.title = args.title
   this.imgurID = args["imgurID"]
   this.userID = args["userID"]
   this.penColor = args["penColor"]
@@ -192,6 +193,7 @@ Project.cleanAROutput = function(projectData){
     , userID: projectData.user_id
     , penColor:[0,0,0,0]
     , ID: projectData.id
+    , title: projectData.title
     , imgurID: projectData.imgur_id
     , spriteAtlas: projectData.sprite_atlas
   };
