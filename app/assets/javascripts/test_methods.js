@@ -71,6 +71,16 @@ function makePad(){
   // test.redraw()
   // test.setListeners()
 }
+
+function recurCount(index){
+  if( index<5){
+    console.log(index)
+    setTimeout(function(){recurCount(index+1)}, 500)
+  } else {
+    return "done"
+  };
+};
+
 /*
 
 var img = new Image();

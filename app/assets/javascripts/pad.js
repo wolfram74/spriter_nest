@@ -130,16 +130,17 @@ Pad.prototype.queueUpdate = function(){
     };
   };
   console.log(this.animationQueue)
+  // TFW your recursive set timeout works http://i.imgur.com/L3rMW6o.gifv
 }
 
 Pad.prototype.animationCycle = function(){
-  console.log("next frame", this.frame)
+  console.log("next frame", this.frame, this)
   var frames = this.animationQueue.length
   if(frames){
     console.log(this.frame % frames)
     this.frame+=1
   }
-  setTimeout(this.animationCycle().bind(this) , 1000)
+  setTimeout(function(){this.animationCycle()}.bind(this), 1000)
 };
 
 Pad.prototype.slideCopy = function(){
