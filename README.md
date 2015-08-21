@@ -1,4 +1,21 @@
 # spriter_nest
+
+## set up
+* fork repo
+* acquire access tokens from imgur
+* use figaro to address them when running the server
+* run the migrations
+* thin start --ssl from root
+
+##
+things that could use work
+* any css at all
+* variable frame rate for the animation cell
+* a color selector rather than just a text field
+* a color memory
+
+
+
 ## user stories
 ### mark 1 features
 * user can log in with imgur ~
