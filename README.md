@@ -1,5 +1,7 @@
 # spriter_nest
 
+[Deployed on Heroku](https://spriter-nest.herokuapp.com)
+
 ## set up
 * fork repo
 * acquire access tokens from imgur
@@ -7,13 +9,14 @@
 * run the migrations
 * thin start --ssl from root
 
-##
-things that could use work
+##things that could use work
 * any css at all
 * variable frame rate for the animation cell
 * a color selector rather than just a text field
 * a color memory
-
+* highlighting for viable or broken buttons
+* a timer to prevent rapid fire saving
+* undo function
 
 
 ## user stories
