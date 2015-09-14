@@ -4,3 +4,37 @@
 .params {
   display: inline-block;
 }
+
+#introHeader {
+  text-align: center;
+}
+canvas {
+  padding: 1em;
+}
+
+#jsSlideIndex ul {
+  width: 18em;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 10px;
+}
+
+#jsSlideIndex li {
+  display: inline-block;
+}
+
+#jsZoomSelect {
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px
+}
+
+#jsColorSelect {
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px
+}
+
+#jsSlideShow {
+  padding: 5px
+}
