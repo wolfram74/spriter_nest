@@ -139,19 +139,20 @@ Pad.prototype.animationCycle = function(){
     this.frame+=1
     this.animateSlide(this.slides[this.animationQueue[this.frame%frames]])
   }
-  setTimeout(function(){this.animationCycle()}.bind(this), 33)
+  setTimeout(function(){this.animationCycle()}.bind(this), 165)
 };
 
 Pad.prototype.animateSlide = function(slide){
   var $canvas = this.$dom.find("#jsAnimation").find("canvas")
-  $canvas.attr({height:slide.height,width:slide.width})
+  var pixelSize = 2
+  $canvas.attr({height:slide.height*pixelSize,width:slide.width*pixelSize})
   var context = $canvas[0].getContext("2d");
   for(var i=0; i < slide.height; i++ ){
     for(var j=0; j < slide.width; j++){
       context.fillStyle = utilities.colorString(slide.pixels[i][j])
       context.fillRect(
-        j, i, 
-        1, 1)
+        j*pixelSize, i*pixelSize, 
+        1*pixelSize, 1*pixelSize)
     };
   };
 
@@ -199,5 +200,7 @@ Pad.prototype.projectSave = function(e){
 };
 
 // Pad.prototype. = function(){};
+/*
 
+*/
 

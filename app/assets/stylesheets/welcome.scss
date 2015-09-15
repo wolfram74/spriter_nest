@@ -8,8 +8,12 @@
 #introHeader {
   text-align: center;
 }
-canvas {
-  padding: 1em;
+/* */
+div#jsSlideIndex{
+/*  position: absolute;
+  right: 5px; */
+  float: right;
+  margin: 5px;
 }
 
 #jsSlideIndex ul {
@@ -23,18 +27,45 @@ canvas {
   display: inline-block;
 }
 
-#jsZoomSelect {
+div#jsZoomSelect {
   border-style: solid;
   border-width: 1px;
-  padding: 2px
+  padding: 2px;
+  float: left;
 }
 
-#jsColorSelect {
+div#jsColorSelect {
   border-style: solid;
   border-width: 1px;
-  padding: 2px
+  padding-top: 2px;
+  padding-right: 2px;
+  padding-left: 2px;
+  float: left;
 }
 
 #jsSlideShow {
-  padding: 5px
+*  padding-left: 10em;
 }
+
+#jsSlideIndex input[type=checkbox]{
+  background-color: rgb(0,210, 0);  
+}
+
+#jsSlideIndex input[type=radio]{
+  color: rgb(210,210, 0);
+}
+
+#jsAnimation{
+  float: right;
+  display: inline-block;
+}
+
+#jsSlideShow{
+  float: right;
+  display: inline-block;  
+}
+
+#jsSlideShow canvas{
+  border-style: solid;
+  border-width: 1px;
+};
