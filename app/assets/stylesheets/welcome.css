@@ -1,7 +1,8 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .params {
+  display: inline-block;
+}
+
+.options {
   display: inline-block;
 }
 
@@ -43,9 +44,6 @@ div#jsColorSelect {
   float: left;
 }
 
-#jsSlideShow {
-*  padding-left: 10em;
-}
 
 #jsSlideIndex input[type=checkbox]{
   background-color: rgb(0,210, 0);  
@@ -57,12 +55,15 @@ div#jsColorSelect {
 
 #jsAnimation{
   float: left;
-*  display: inline-block;
-}
+/**  display: inline-block;
+*/}
 
 #jsSlideShow{
-*  float: right;
-*  display: inline-block;  
+/*  position: relative;
+  display: block;
+*/
+/**  float: right;
+*//*  display: inline-block;*/  
 }
 
 #jsSlideShow canvas{
@@ -71,7 +72,7 @@ div#jsColorSelect {
 };
 
 .projectsIndex form {
-*  border-style: solid;
-*  border-width: 1px;
-  padding: 4px;  
+/**  border-style: solid;
+*//**  border-width: 1px;
+*/  padding: 4px;  
 };
